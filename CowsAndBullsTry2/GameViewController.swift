@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+class GameViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var giveUp: UIButton!
+    @IBOutlet weak var nextBubble: UIButton!
+    @IBOutlet weak var clear: UIButton!
+    @IBOutlet weak var previousBubble: UIButton!
     @IBOutlet weak var bubbleFirstLetter: UIButton!
     @IBOutlet weak var bubbleSecondLetter: UIButton!
     @IBOutlet weak var bubbleThirdLetter: UIButton!
@@ -29,7 +34,41 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
     let turquoise = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
     var lastBubbleSelected = 1
     var hasRepeatingLetters = false
+    var difficultyLevel = 0
+    var counter = 0.0
+    var timer = Timer()
     
+    
+    @IBAction func clearBubbles(_ sender: Any) {
+        info.text = "Cleared!"
+        guessField.text = "    "
+        fadeViewInThenOut(view: info, delay: 2)
+        
+        bubbleFirstLetter.setTitle(" ", for: .normal)
+        bubbleSecondLetter.setTitle(" ", for: .normal)
+        bubbleThirdLetter.setTitle(" ", for: .normal)
+        bubbleFourthLetter.setTitle(" ", for: .normal)
+        
+        selectThisBubble(bubble: 1)
+    }
+    
+    @IBAction func previousBubbleFunction(_ sender: Any) {
+        if (lastBubbleSelected != 1) {
+            selectThisBubble(bubble: lastBubbleSelected - 1)
+        } else {
+            selectThisBubble(bubble: lastBubbleSelected)
+        }
+    }
+    @IBAction func nextBubbleFunction(_ sender: Any) {
+        if (lastBubbleSelected != 4) {
+            selectThisBubble(bubble: lastBubbleSelected + 1)
+        } else {
+            selectThisBubble(bubble: lastBubbleSelected)
+        }
+    }
+    @IBAction func giveUpFunction(_ sender: Any) {
+        gameOver(won: false)
+    }
     
     @IBAction func bubbleFirstClicked(_ sender: Any) {
         guessField.becomeFirstResponder()
@@ -40,6 +79,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         bubbleFourthLetter.backgroundColor = ice
         
         lastBubbleSelected = 1
+        
+        nextBubble.isEnabled = true
+        previousBubble.isEnabled = false
     }
     
     @IBAction func bubbleSecondClicked(_ sender: Any) {
@@ -52,6 +94,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         bubbleFourthLetter.backgroundColor = ice
         
         lastBubbleSelected = 2
+        
+        nextBubble.isEnabled = true
+        previousBubble.isEnabled = true
     }
     
     @IBAction func bubbleThirdClicked(_ sender: Any) {
@@ -64,6 +109,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         bubbleFourthLetter.backgroundColor = ice
         
         lastBubbleSelected = 3
+        
+        nextBubble.isEnabled = true
+        previousBubble.isEnabled = true
     }
     
     @IBAction func bubbleFourthClicked(_ sender: Any) {
@@ -76,6 +124,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         bubbleFourthLetter.backgroundColor = turquoise
         
         lastBubbleSelected = 4
+        
+        nextBubble.isEnabled = false
+        previousBubble.isEnabled = true
     }
     
     
@@ -83,8 +134,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         guessField.text = guessField.text?.uppercased()
         if var textInputtedWithSpaces = guessField.text {
             let textInputted = textInputtedWithSpaces.replacingOccurrences(of: " ", with: "")
-            print(textInputted)
             hasRepeatingLetters = false
+            if (textInputted == "") {
+                clear.isEnabled = false
+            } else {
+                clear.isEnabled = true
+            }
             if (textInputted.count == 4) {
                 
                 if (!allPossibleWords.contains(textInputted.lowercased())) {
@@ -199,6 +254,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         guessField.delegate = self
         guessTable.delegate = self
         guessTable.dataSource = self
+        print("Dll: \(difficultyLevel)")
 
         if let wordsFilePath = Bundle.main.path(forResource: "CBwords", ofType: "txt") {
             do {
@@ -208,29 +264,41 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
                 
                 allPossibleWords = wordLines
                 
+                if (difficultyLevel != 1) {
+                    let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
+                    
+                    word = randomLine.uppercased()
+                    
+                    print(word + "Finder")
+                }
+                
             } catch { // contentsOfFile throws an error
                 print("Error: \(error)")
             }
             
         }
         
-        if let wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt") {
-            do {
-                let wordsString = try String(contentsOfFile: wordsFilePath)
-                
-                let wordLines = wordsString.components(separatedBy: .newlines)
-                
-                let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
-                
-                word = randomLine.uppercased()
-                
-                print(word + "Finder")
-                
-            } catch { // contentsOfFile throws an error
-                print("Error: \(error)")
-            }
+        if (difficultyLevel == 1) {
             
+            if let wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt") {
+                
+                do {
+                    let wordsString = try String(contentsOfFile: wordsFilePath)
+                    
+                    let wordLines = wordsString.components(separatedBy: .newlines)
+                    
+                    let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
+                    
+                    word = randomLine.uppercased()
+                    
+                    print(word + "Finder")
+                    
+                } catch { // contentsOfFile throws an error
+                    print("Error: \(error)")
+                }
+            }
         }
+        
         
         info.text = "Enter a guess!"
         guessField.text = "    "
@@ -244,7 +312,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         
         selectThisBubble(bubble: 1)
         
+        timerLabel.text = String(counter)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
     }
+    
+    @objc func UpdateTimer() {
+        counter = counter + 0.1
+        timerLabel.text = String(format: "%.1f", counter)
+    }
+    
     
     //For some reason, we need to delay before the text can select initially
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
@@ -342,12 +418,33 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSour
         info.text = "Cows: \(cows), Bulls: \(bulls)"
         fadeViewInThenOut(view: info, delay: 2)
         if (bulls == 4) {
-            info.text = "That's Exactly Right! You win and you took \(pastGuesses.count) guesses"
+            gameOver(won: true)
         }
         
         cowsArray.insert(cows, at: 0)
         bullsArray.insert(bulls, at: 0)
         self.guessTable.reloadData()
+    }
+    
+    func gameOver(won: Bool) {
+        timer.invalidate()
+        if (won) {
+            info.text = "That's Exactly Right! You got it in \(pastGuesses.count) guesses and \(timerLabel.text!) seconds!"
+            fadeViewInThenOut(view: info, delay: 10000)
+
+        } else {
+            info.text = "The word was \(word)!"
+            fadeViewInThenOut(view: info, delay: 10000)
+        }
+        giveUp.isEnabled = false
+        nextBubble.isEnabled = false
+        clear.isEnabled = false
+        previousBubble.isEnabled = false
+        bubbleFirstLetter.isEnabled = false
+        bubbleSecondLetter.isEnabled = false
+        bubbleThirdLetter.isEnabled = false
+        bubbleFourthLetter.isEnabled = false
+        guessField.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

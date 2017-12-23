@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E603E9411FE99E9F008BC5B0 /* CBwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E603E93D1FE99E9F008BC5B0 /* CBwords.txt */; };
+		E603E9431FE99E9F008BC5B0 /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */; };
+		E603E94A1FE99EFC008BC5B0 /* bull.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9461FE99EFC008BC5B0 /* bull.png */; };
+		E603E94C1FE99EFC008BC5B0 /* cow.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9481FE99EFC008BC5B0 /* cow.png */; };
 		E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */; };
 		E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349511FD5FE34004DAB2A /* AppDelegate.swift */; };
-		E6C349541FD5FE34004DAB2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349531FD5FE34004DAB2A /* ViewController.swift */; };
+		E6C349541FD5FE34004DAB2A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349531FD5FE34004DAB2A /* GameViewController.swift */; };
 		E6C349571FD5FE34004DAB2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C349551FD5FE34004DAB2A /* Main.storyboard */; };
 		E6C349591FD5FE34004DAB2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6C349581FD5FE34004DAB2A /* Assets.xcassets */; };
 		E6C3495C1FD5FE34004DAB2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C3495A1FD5FE34004DAB2A /* LaunchScreen.storyboard */; };
 		E6C349671FD5FE34004DAB2A /* CowsAndBullsTry2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349661FD5FE34004DAB2A /* CowsAndBullsTry2Tests.swift */; };
 		E6C349721FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349711FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift */; };
-		E6EC237D1FD91FDC001429CF /* bull.png in Resources */ = {isa = PBXBuildFile; fileRef = E6EC237F1FD91FDC001429CF /* bull.png */; };
-		E6EC23801FD91FE3001429CF /* cow.png in Resources */ = {isa = PBXBuildFile; fileRef = E6EC23821FD91FE3001429CF /* cow.png */; };
-		E6EC23831FD91FED001429CF /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6EC23851FD91FED001429CF /* EasyWords.txt */; };
-		E6EC23861FD91FF1001429CF /* CBwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6EC23881FD91FF1001429CF /* CBwords.txt */; };
+		E6C9D9E01FE9A20A00E248D0 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E603E93D1FE99E9F008BC5B0 /* CBwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CBwords.txt; path = Assets.xcassets/CBwords.txt; sourceTree = "<group>"; };
+		E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EasyWords.txt; path = Assets.xcassets/EasyWords.txt; sourceTree = "<group>"; };
+		E603E9461FE99EFC008BC5B0 /* bull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bull.png; path = Assets.xcassets/bull.png; sourceTree = "<group>"; };
+		E603E9481FE99EFC008BC5B0 /* cow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cow.png; path = Assets.xcassets/cow.png; sourceTree = "<group>"; };
 		E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E6C3494E1FD5FE34004DAB2A /* CowsAndBullsTry2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowsAndBullsTry2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C349511FD5FE34004DAB2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E6C349531FD5FE34004DAB2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E6C349531FD5FE34004DAB2A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E6C349561FD5FE34004DAB2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6C349581FD5FE34004DAB2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6C3495B1FD5FE34004DAB2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,10 +58,7 @@
 		E6C3496D1FD5FE34004DAB2A /* CowsAndBullsTry2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CowsAndBullsTry2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C349711FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowsAndBullsTry2UITests.swift; sourceTree = "<group>"; };
 		E6C349731FD5FE34004DAB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6EC237E1FD91FDC001429CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/bull.png; sourceTree = "<group>"; };
-		E6EC23811FD91FE3001429CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/cow.png; sourceTree = "<group>"; };
-		E6EC23841FD91FED001429CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/EasyWords.txt; sourceTree = "<group>"; };
-		E6EC23871FD91FF1001429CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/CBwords.txt; sourceTree = "<group>"; };
+		E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,16 +110,17 @@
 			isa = PBXGroup;
 			children = (
 				E6C349511FD5FE34004DAB2A /* AppDelegate.swift */,
-				E6C349531FD5FE34004DAB2A /* ViewController.swift */,
+				E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */,
+				E6C349531FD5FE34004DAB2A /* GameViewController.swift */,
 				E6C349551FD5FE34004DAB2A /* Main.storyboard */,
-				E6EC237F1FD91FDC001429CF /* bull.png */,
-				E6EC23821FD91FE3001429CF /* cow.png */,
 				E6C349581FD5FE34004DAB2A /* Assets.xcassets */,
 				E6C3495A1FD5FE34004DAB2A /* LaunchScreen.storyboard */,
 				E6C3495D1FD5FE34004DAB2A /* Info.plist */,
 				E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */,
-				E6EC23851FD91FED001429CF /* EasyWords.txt */,
-				E6EC23881FD91FF1001429CF /* CBwords.txt */,
+				E603E9461FE99EFC008BC5B0 /* bull.png */,
+				E603E9481FE99EFC008BC5B0 /* cow.png */,
+				E603E93D1FE99E9F008BC5B0 /* CBwords.txt */,
+				E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */,
 			);
 			path = CowsAndBullsTry2;
 			sourceTree = "<group>";
@@ -248,11 +251,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6C3495C1FD5FE34004DAB2A /* LaunchScreen.storyboard in Resources */,
-				E6EC237D1FD91FDC001429CF /* bull.png in Resources */,
-				E6EC23861FD91FF1001429CF /* CBwords.txt in Resources */,
-				E6EC23801FD91FE3001429CF /* cow.png in Resources */,
+				E603E9431FE99E9F008BC5B0 /* EasyWords.txt in Resources */,
+				E603E94C1FE99EFC008BC5B0 /* cow.png in Resources */,
+				E603E9411FE99E9F008BC5B0 /* CBwords.txt in Resources */,
+				E603E94A1FE99EFC008BC5B0 /* bull.png in Resources */,
 				E6C349591FD5FE34004DAB2A /* Assets.xcassets in Resources */,
-				E6EC23831FD91FED001429CF /* EasyWords.txt in Resources */,
 				E6C349571FD5FE34004DAB2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,8 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */,
-				E6C349541FD5FE34004DAB2A /* ViewController.swift in Sources */,
+				E6C349541FD5FE34004DAB2A /* GameViewController.swift in Sources */,
 				E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */,
+				E6C9D9E01FE9A20A00E248D0 /* DifficultyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,42 +334,6 @@
 				E6C3495B1FD5FE34004DAB2A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E6EC237F1FD91FDC001429CF /* bull.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6EC237E1FD91FDC001429CF /* Base */,
-			);
-			name = bull.png;
-			path = ../../../../Desktop;
-			sourceTree = "<group>";
-		};
-		E6EC23821FD91FE3001429CF /* cow.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6EC23811FD91FE3001429CF /* Base */,
-			);
-			name = cow.png;
-			path = ../../../../Desktop;
-			sourceTree = "<group>";
-		};
-		E6EC23851FD91FED001429CF /* EasyWords.txt */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6EC23841FD91FED001429CF /* Base */,
-			);
-			name = EasyWords.txt;
-			path = ../../../../Desktop;
-			sourceTree = "<group>";
-		};
-		E6EC23881FD91FF1001429CF /* CBwords.txt */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6EC23871FD91FF1001429CF /* Base */,
-			);
-			name = CBwords.txt;
-			path = ../../../../Desktop;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
