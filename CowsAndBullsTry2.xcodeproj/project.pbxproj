@@ -11,6 +11,7 @@
 		E603E9431FE99E9F008BC5B0 /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */; };
 		E603E94A1FE99EFC008BC5B0 /* bull.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9461FE99EFC008BC5B0 /* bull.png */; };
 		E603E94C1FE99EFC008BC5B0 /* cow.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9481FE99EFC008BC5B0 /* cow.png */; };
+		E63C82DD200E7DFA008B4F9B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63C82DC200E7DFA008B4F9B /* Key.swift */; };
 		E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */; };
 		E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349511FD5FE34004DAB2A /* AppDelegate.swift */; };
 		E6C349541FD5FE34004DAB2A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349531FD5FE34004DAB2A /* GameViewController.swift */; };
@@ -39,11 +40,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E69CBED22007DC3B002B6169 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E603E93D1FE99E9F008BC5B0 /* CBwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CBwords.txt; path = Assets.xcassets/CBwords.txt; sourceTree = "<group>"; };
 		E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EasyWords.txt; path = Assets.xcassets/EasyWords.txt; sourceTree = "<group>"; };
 		E603E9461FE99EFC008BC5B0 /* bull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bull.png; path = Assets.xcassets/bull.png; sourceTree = "<group>"; };
 		E603E9481FE99EFC008BC5B0 /* cow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cow.png; path = Assets.xcassets/cow.png; sourceTree = "<group>"; };
+		E63C82DC200E7DFA008B4F9B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		E69CBEC92007DC3B002B6169 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		E69CBECB2007DC3B002B6169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E6C3494E1FD5FE34004DAB2A /* CowsAndBullsTry2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowsAndBullsTry2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C349511FD5FE34004DAB2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,12 +103,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E69CBEC82007DC3B002B6169 /* CBKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E69CBEC92007DC3B002B6169 /* KeyboardViewController.swift */,
+				E69CBECB2007DC3B002B6169 /* Info.plist */,
+			);
+			path = CBKeyboard;
+			sourceTree = "<group>";
+		};
 		E6C349451FD5FE33004DAB2A = {
 			isa = PBXGroup;
 			children = (
 				E6C349501FD5FE34004DAB2A /* CowsAndBullsTry2 */,
 				E6C349651FD5FE34004DAB2A /* CowsAndBullsTry2Tests */,
 				E6C349701FD5FE34004DAB2A /* CowsAndBullsTry2UITests */,
+				E69CBEC82007DC3B002B6169 /* CBKeyboard */,
 				E6C3494F1FD5FE34004DAB2A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +136,7 @@
 		E6C349501FD5FE34004DAB2A /* CowsAndBullsTry2 */ = {
 			isa = PBXGroup;
 			children = (
+				E63C82DC200E7DFA008B4F9B /* Key.swift */,
 				E6C349511FD5FE34004DAB2A /* AppDelegate.swift */,
 				E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */,
 				E6C349531FD5FE34004DAB2A /* GameViewController.swift */,
@@ -153,6 +181,7 @@
 				E6C3494A1FD5FE34004DAB2A /* Sources */,
 				E6C3494B1FD5FE34004DAB2A /* Frameworks */,
 				E6C3494C1FD5FE34004DAB2A /* Resources */,
+				E69CBED22007DC3B002B6169 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -282,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */,
+				E63C82DD200E7DFA008B4F9B /* Key.swift in Sources */,
 				E6C349541FD5FE34004DAB2A /* GameViewController.swift in Sources */,
 				E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */,
 				E6C9D9E01FE9A20A00E248D0 /* DifficultyViewController.swift in Sources */,
@@ -449,6 +479,7 @@
 		E6C349771FD5FE34004DAB2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CowsAndBullsTry2/Info.plist;
@@ -463,6 +494,7 @@
 		E6C349781FD5FE34004DAB2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CowsAndBullsTry2/Info.plist;
