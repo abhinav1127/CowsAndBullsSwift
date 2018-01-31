@@ -11,6 +11,7 @@ import UIKit
 class Key: UIButton {
 
     var isOn: Bool = true
+    var letter: Character = "!"
 
     func changeState() {
         if (isOn) {
@@ -21,6 +22,10 @@ class Key: UIButton {
             self.setTitleColor(.blue, for: .normal)
 
         }
+    }
+    
+    func setLetter(theLetter: Character) {
+        self.letter = theLetter
     }
 }
 

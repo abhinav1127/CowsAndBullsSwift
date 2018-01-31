@@ -19,8 +19,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     @IBOutlet weak var bubbleSecondLetter: UIButton!
     @IBOutlet weak var bubbleThirdLetter: UIButton!
     @IBOutlet weak var bubbleFourthLetter: UIButton!
-    @IBOutlet weak var bullsLbl: UILabel!
-    @IBOutlet weak var cowsLbl: UILabel!
     @IBOutlet weak var guessField: UITextField!
     @IBOutlet weak var info: UILabel!
     @IBOutlet weak var guessTable: UITableView!
@@ -36,37 +34,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     var hasRepeatingLetters = false
     var difficultyLevel = 0
     
-    @IBOutlet weak var aKeyboard: Key!
-    @IBOutlet weak var bKeyboard: Key!
-    @IBOutlet weak var cKeyboard: Key!
-    @IBOutlet weak var dKeyboard: Key!
-    @IBOutlet weak var eKeyboard: Key!
-    @IBOutlet weak var fKeyboard: Key!
-    @IBOutlet weak var gKeyboard: Key!
-    @IBOutlet weak var hKeyboard: Key!
-    @IBOutlet weak var iKeyboard: Key!
-    @IBOutlet weak var jKeyboard: Key!
-    @IBOutlet weak var kKeyboard: Key!
-    @IBOutlet weak var lKeyboard: Key!
-    @IBOutlet weak var mKeyboard: Key!
-    @IBOutlet weak var nKeyboard: Key!
-    @IBOutlet weak var oKeyboard: Key!
-    @IBOutlet weak var pKeyboard: Key!
-    @IBOutlet weak var qKeyboard: Key!
-    @IBOutlet weak var rKeyboard: Key!
-    @IBOutlet weak var sKeyboard: Key!
-    @IBOutlet weak var tKeyboard: Key!
-    @IBOutlet weak var uKeyboard: Key!
-    @IBOutlet weak var vKeyboard: Key!
-    @IBOutlet weak var wKeyboard: Key!
-    @IBOutlet weak var xKeyboard: Key!
-    @IBOutlet weak var yKeyboard: Key!
-    @IBOutlet weak var zKeyboard: Key!
-    
     
     @IBOutlet var keyboardKeys: [Key]!
     var keyboardKeyLongPressRecognizers: [UILongPressGestureRecognizer] = []
-    
     
     
     var startTime = TimeInterval()
@@ -90,55 +60,15 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     }
     
     @objc @IBAction func keyboardHeld(sender: UILongPressGestureRecognizer) {
-        let theView = sender.view
-        let theKey = (theView as! Key)
-        theKey.changeState()
         
-        print("liyfjhfjgf")
-        //sender.changeState()
-    }
-    /*@IBAction func KeyboardHeld(_ sender: UILongPressGestureRecognizer) {
-        // convert Int to a valid UnicodeScalar
-        
-        if (sender as UILongPressGestureRecognizer).state == .began {
-            print("hola \((sender as AnyObject).isOn)")
-            print("blimey")
-            let chosenTag = ((sender as AnyObject).tag)!
-            switch chosenTag {
-            case 65: aKeyboard.changeState()
-            case 66: bKeyboard.changeState()
-            case 67: cKeyboard.changeState()
-            case 68: dKeyboard.changeState()
-            case 69: eKeyboard.changeState()
-            case 70: fKeyboard.changeState()
-            case 71: gKeyboard.changeState()
-            case 72: hKeyboard.changeState()
-            case 73: iKeyboard.changeState()
-            case 74: jKeyboard.changeState()
-            case 75: kKeyboard.changeState()
-            case 76: lKeyboard.changeState()
-            case 77: mKeyboard.changeState()
-            case 78: nKeyboard.changeState()
-            case 79: oKeyboard.changeState()
-            case 80: pKeyboard.changeState()
-            case 81: qKeyboard.changeState()
-            case 82: rKeyboard.changeState()
-            case 83: sKeyboard.changeState()
-            case 84: tKeyboard.changeState()
-            case 85: uKeyboard.changeState()
-            case 86: vKeyboard.changeState()
-            case 87: wKeyboard.changeState()
-            case 88: xKeyboard.changeState()
-            case 89: yKeyboard.changeState()
-            case 90: zKeyboard.changeState()
-                
-                default:
-                    print("default NOT EXPECTED AND NOT GOOD")
-            }
-            print("hola \((sender as AnyObject).isOn)")
-
+        if (sender.state == UIGestureRecognizerState.began) {
+            print("yayyy")
+            let theView = sender.view
+            let theKey = (theView as! Key)
+            theKey.changeState()
         }
-    } */
+        
+    }
     
     
     @objc func updateTime() {
@@ -385,6 +315,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         
         for key: Key in keyboardKeys {
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
+            gestureRecognizer.minimumPressDuration = 0.6
             keyboardKeyLongPressRecognizers.append(gestureRecognizer)
             key.addGestureRecognizer(gestureRecognizer)
         }
@@ -451,15 +382,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(GameViewController.updateTime)), userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate
         
-        /*kKeyboard.isUserInteractionEnabled = true
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector(("longPressed:")))
-        kKeyboard.addGestureRecognizer(longPressRecognizer)*/
-        
     }
     
-    /*@objc func longPressed() {
-        print("something")
-    }*/
+   
     
     
     //For some reason, we need to delay before the text can select initially
@@ -589,32 +514,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         for key: Key in keyboardKeys {
             key.isEnabled = false
         }
-//        aKeyboard.isEnabled = false
-//        bKeyboard.isEnabled = false
-//        cKeyboard.isEnabled = false
-//        dKeyboard.isEnabled = false
-//        eKeyboard.isEnabled = false
-//        fKeyboard.isEnabled = false
-//        gKeyboard.isEnabled = false
-//        hKeyboard.isEnabled = false
-//        iKeyboard.isEnabled = false
-//        jKeyboard.isEnabled = false
-//        kKeyboard.isEnabled = false
-//        lKeyboard.isEnabled = false
-//        mKeyboard.isEnabled = false
-//        nKeyboard.isEnabled = false
-//        oKeyboard.isEnabled = false
-//        pKeyboard.isEnabled = false
-//        qKeyboard.isEnabled = false
-//        rKeyboard.isEnabled = false
-//        sKeyboard.isEnabled = false
-//        tKeyboard.isEnabled = false
-//        uKeyboard.isEnabled = false
-//        vKeyboard.isEnabled = false
-//        wKeyboard.isEnabled = false
-//        xKeyboard.isEnabled = false
-//        yKeyboard.isEnabled = false
-//        zKeyboard.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -77,14 +77,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R6J-uj-9Vk">
-                                <rect key="frame" x="55" y="186" width="268" height="249"/>
+                                <rect key="frame" x="55" y="186" width="301" height="249"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="rV5-Jc-pcU">
-                                    <rect key="frame" x="0.0" y="0.0" width="301" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="268" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bull.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-E2-VB3">
-                                            <rect key="frame" x="227" y="6" width="66" height="48"/>
+                                            <rect key="frame" x="194" y="6" width="66" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="66" id="9UM-Bg-BYX"/>
                                             </constraints>
@@ -96,7 +96,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cow.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-od-zGa">
-                                            <rect key="frame" x="148" y="9" width="60" height="42"/>
+                                            <rect key="frame" x="115" y="9" width="60" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="h9O-r1-bW6"/>
                                             </constraints>
@@ -116,23 +116,23 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="40" id="hqp-KM-HMo" customClass="CustomTableViewCell" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="301" height="40"/>
+                                        <rect key="frame" x="0.0" y="88" width="268" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hqp-KM-HMo" id="ZK7-d7-5sL">
-                                            <rect key="frame" x="0.0" y="0.0" width="301" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="268" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRj-P5-83N" customClass="CustomTableViewCell" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-2" width="277" height="40"/>
+                                                    <rect key="frame" x="0.0" y="-2" width="244" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fh-OO-gzi">
-                                                            <rect key="frame" x="8" y="11" width="130" height="21"/>
+                                                            <rect key="frame" x="8" y="11" width="97" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Ri-wSL">
-                                                            <rect key="frame" x="156" y="11" width="43" height="21"/>
+                                                            <rect key="frame" x="123" y="11" width="43" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="VDj-F2-IIO"/>
                                                             </constraints>
@@ -141,7 +141,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml5-p3-J8s">
-                                                            <rect key="frame" x="236" y="11" width="37" height="21"/>
+                                                            <rect key="frame" x="203" y="11" width="37" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="37" id="oDM-M1-jsm"/>
                                                             </constraints>
@@ -185,7 +185,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-KC-d5X">
-                                <rect key="frame" x="50" y="443" width="278" height="30"/>
+                                <rect key="frame" x="66.5" y="443" width="278" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHe-fE-x6d">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
@@ -218,7 +218,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-n6-Ish">
-                                <rect key="frame" x="36" y="131" width="306" height="37"/>
+                                <rect key="frame" x="69" y="131" width="306" height="37"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -231,7 +231,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="IhG-6P-vu1">
-                                <rect key="frame" x="62.5" y="63" width="253" height="49"/>
+                                <rect key="frame" x="79" y="63" width="253" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM9-Fy-6GF">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="49"/>
@@ -300,10 +300,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-qr-59L">
-                                <rect key="frame" x="0.0" y="470" width="379" height="55"/>
+                                <rect key="frame" x="0.0" y="470" width="412" height="55"/>
                                 <subviews>
                                     <button opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNn-KE-hAN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Q"/>
                                         <connections>
@@ -311,7 +311,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="87" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TE-I6-SQK" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="38.5" y="0.0" width="31" height="55"/>
+                                        <rect key="frame" x="42" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="W"/>
                                         <connections>
@@ -319,7 +319,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="69" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sts-Y0-Juw" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="77.5" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="84" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="E"/>
                                         <connections>
@@ -327,7 +327,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="82" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-kD-Jay" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="116" y="0.0" width="31" height="55"/>
+                                        <rect key="frame" x="126" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="R"/>
                                         <connections>
@@ -335,7 +335,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="84" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSz-Qm-vKI" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="155" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="168" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="T"/>
                                         <connections>
@@ -343,7 +343,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="89" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-Pe-Iuu" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="193.5" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="210" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Y"/>
                                         <connections>
@@ -351,7 +351,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="85" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSi-Mt-2u4" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="232" y="0.0" width="31" height="55"/>
+                                        <rect key="frame" x="252" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="U"/>
                                         <connections>
@@ -359,7 +359,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFM-DT-9NA" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="271" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="294" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="I"/>
                                         <connections>
@@ -367,7 +367,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="79" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czx-n4-sMo" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="309.5" y="0.0" width="31" height="55"/>
+                                        <rect key="frame" x="336" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="O"/>
                                         <connections>
@@ -375,7 +375,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="80" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5M-b1-PwH" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="348.5" y="0.0" width="30.5" height="55"/>
+                                        <rect key="frame" x="378" y="0.0" width="34" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="P"/>
                                         <connections>
@@ -385,7 +385,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mna-h5-8KF">
-                                <rect key="frame" x="60" y="564" width="259" height="55"/>
+                                <rect key="frame" x="76.5" y="564" width="259" height="55"/>
                                 <subviews>
                                     <button opaque="NO" tag="90" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-kY-tcB" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="55"/>
@@ -447,7 +447,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ypd-hw-UbM">
-                                <rect key="frame" x="23" y="518" width="334" height="55"/>
+                                <rect key="frame" x="39.5" y="518" width="334" height="55"/>
                                 <subviews>
                                     <button opaque="NO" tag="65" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2n-5X-QaP" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="55"/>
@@ -525,7 +525,7 @@
                                 </subviews>
                             </stackView>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oLR-it-Xv2">
-                                <rect key="frame" x="6" y="131" width="22" height="37"/>
+                                <rect key="frame" x="6" y="131" width="55" height="37"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -580,44 +580,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="aKeyboard" destination="f2n-5X-QaP" id="NIU-7Q-uzh"/>
-                        <outlet property="bKeyboard" destination="69C-vi-aVJ" id="BuH-23-rWc"/>
                         <outlet property="bubbleFirstLetter" destination="sM9-Fy-6GF" id="d5g-Vf-i9d"/>
                         <outlet property="bubbleFourthLetter" destination="8WC-vW-M7t" id="fjK-bl-ypJ"/>
                         <outlet property="bubbleSecondLetter" destination="Ede-nF-Rfn" id="VER-rb-Wqq"/>
                         <outlet property="bubbleThirdLetter" destination="fcY-0A-nBy" id="duG-MO-R7C"/>
-                        <outlet property="cKeyboard" destination="0fR-tF-I4c" id="Cto-4K-3QI"/>
                         <outlet property="clear" destination="iqP-o9-cX4" id="U3M-QC-CZL"/>
-                        <outlet property="dKeyboard" destination="10c-jw-W05" id="5L2-xa-wok"/>
-                        <outlet property="eKeyboard" destination="sts-Y0-Juw" id="vrb-JH-VxP"/>
-                        <outlet property="fKeyboard" destination="gag-eW-zxg" id="s0Q-VI-h6v"/>
-                        <outlet property="gKeyboard" destination="xqZ-BQ-nCI" id="J8B-An-MrQ"/>
                         <outlet property="giveUp" destination="S57-9o-RUJ" id="Wap-dT-CDU"/>
                         <outlet property="guessField" destination="oLR-it-Xv2" id="eMm-yh-vvW"/>
                         <outlet property="guessTable" destination="R6J-uj-9Vk" id="FTo-v7-C1c"/>
-                        <outlet property="hKeyboard" destination="bxp-bZ-z3c" id="WWH-zo-Ird"/>
-                        <outlet property="iKeyboard" destination="hFM-DT-9NA" id="jgT-DB-GWL"/>
                         <outlet property="info" destination="dyd-n6-Ish" id="LNq-Rv-GRB"/>
-                        <outlet property="jKeyboard" destination="YKd-rz-tPT" id="4sq-9T-KwV"/>
-                        <outlet property="kKeyboard" destination="E5h-FI-eW1" id="yD4-gB-Bg3"/>
-                        <outlet property="lKeyboard" destination="bn2-ha-Ph3" id="xyY-BI-hNg"/>
-                        <outlet property="mKeyboard" destination="g9a-UN-Xu7" id="dlv-1l-6ew"/>
-                        <outlet property="nKeyboard" destination="SzJ-6D-4Nh" id="0zR-ct-9co"/>
                         <outlet property="nextBubble" destination="RfR-VL-RkC" id="zvS-yn-6Hh"/>
-                        <outlet property="oKeyboard" destination="czx-n4-sMo" id="3wx-zB-v72"/>
-                        <outlet property="pKeyboard" destination="I5M-b1-PwH" id="Xh1-XX-PRC"/>
                         <outlet property="previousBubble" destination="cHe-fE-x6d" id="2Sf-q9-dhw"/>
-                        <outlet property="qKeyboard" destination="HNn-KE-hAN" id="Wml-jX-YTP"/>
-                        <outlet property="rKeyboard" destination="aHh-kD-Jay" id="WZe-jp-dKg"/>
-                        <outlet property="sKeyboard" destination="EOP-u6-cjU" id="rth-yf-qDH"/>
-                        <outlet property="tKeyboard" destination="KSz-Qm-vKI" id="2D5-Qz-WGP"/>
                         <outlet property="timerLabel" destination="lXf-RJ-4yB" id="1fb-8d-33u"/>
-                        <outlet property="uKeyboard" destination="RSi-Mt-2u4" id="XvJ-vE-e1b"/>
-                        <outlet property="vKeyboard" destination="GCw-g7-8vN" id="Kqd-Ex-rNK"/>
-                        <outlet property="wKeyboard" destination="0TE-I6-SQK" id="peB-SK-XaN"/>
-                        <outlet property="xKeyboard" destination="GWR-aJ-VXV" id="fjf-pD-SFT"/>
-                        <outlet property="yKeyboard" destination="kg5-Pe-Iuu" id="XdJ-Iw-I12"/>
-                        <outlet property="zKeyboard" destination="VPn-kY-tcB" id="Nrp-s5-oYl"/>
                         <outletCollection property="keyboardKeys" destination="HNn-KE-hAN" collectionClass="NSMutableArray" id="2xs-J8-NHC"/>
                         <outletCollection property="keyboardKeys" destination="0TE-I6-SQK" collectionClass="NSMutableArray" id="xs8-15-LIA"/>
                         <outletCollection property="keyboardKeys" destination="sts-Y0-Juw" collectionClass="NSMutableArray" id="Hqa-R4-TBd"/>
