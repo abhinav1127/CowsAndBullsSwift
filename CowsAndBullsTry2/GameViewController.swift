@@ -47,14 +47,11 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         print("hol0 \((sender as AnyObject).isOn)")
 
         if (sender.isOn) {
-                guard let myUnicodeScalar = UnicodeScalar((sender as AnyObject).tag) else {
-                return
-            }
             
-            // convert UnicodeScalar to Character
-            let myCharacter = Character(myUnicodeScalar)
-            guessField.text = replace(myString: guessField.text!, lastBubbleSelected - 1, myCharacter)
+            guessField.text = replace(myString: guessField.text!, lastBubbleSelected - 1, sender.letter)
             textChange((Any).self)
+        } else {
+            info.text = "\(sender.letter) has been disabled. Hold it to enable."
         }
     
     }
@@ -313,7 +310,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         guessTable.delegate = self
         guessTable.dataSource = self
         
-        for key: Key in keyboardKeys {
+        for (index, key) in keyboardKeys.enumerated() {
+            let keyTitle: Character = Character((key.titleLabel?.text!)!)
+            key.setLetter(theLetter: keyTitle)
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
             gestureRecognizer.minimumPressDuration = 0.6
             keyboardKeyLongPressRecognizers.append(gestureRecognizer)
