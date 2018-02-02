@@ -15,10 +15,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     @IBOutlet weak var nextBubble: UIButton!
     @IBOutlet weak var clear: UIButton!
     @IBOutlet weak var previousBubble: UIButton!
-    @IBOutlet weak var bubbleFirstLetter: UIButton!
-    @IBOutlet weak var bubbleSecondLetter: UIButton!
-    @IBOutlet weak var bubbleThirdLetter: UIButton!
-    @IBOutlet weak var bubbleFourthLetter: UIButton!
+    
     @IBOutlet weak var guessField: UITextField!
     @IBOutlet weak var info: UILabel!
     @IBOutlet weak var guessTable: UITableView!
@@ -30,13 +27,18 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     var allPossibleWords: [String] = []
     let ice = UIColor(red: 115/255, green: 253/255, blue: 255/255, alpha: 1)
     let turquoise = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
-    var lastBubbleSelected = 1
+    var lastBubbleSelected = 0
     var hasRepeatingLetters = false
     var difficultyLevel = 0
     
     
     @IBOutlet var keyboardKeys: [Key]!
     var keyboardKeyLongPressRecognizers: [UILongPressGestureRecognizer] = []
+    
+    
+    @IBOutlet var bubbles: [Bubble]!
+    var currentGuess: String = "    "
+    
     
     
     var startTime = TimeInterval()
@@ -48,12 +50,20 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
 
         if (sender.isOn) {
             
-            guessField.text = replace(myString: guessField.text!, lastBubbleSelected - 1, sender.letter)
-            textChange((Any).self)
+            bubbles[lastBubbleSelected].setTitle("\(String(sender.letter))", for: .normal)
+
+            currentGuess = replace(myString: currentGuess, lastBubbleSelected, sender.letter)
+            print(currentGuess)
+            examineGuess(currGuess: currentGuess)
+            selectNextBubble()
         } else {
             info.text = "\(sender.letter) has been disabled. Hold it to enable."
         }
     
+    }
+    
+    @IBAction func submitGuess(_ sender: Any) {
+        performGuess(currGuess: currentGuess)
     }
     
     @objc @IBAction func keyboardHeld(sender: UILongPressGestureRecognizer) {
@@ -102,205 +112,200 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     @IBAction func clearBubbles(_ sender: Any) {
         info.text = "Cleared!"
-        guessField.text = "    "
+        currentGuess = "    "
         fadeViewInThenOut(view: info, delay: 2)
         
-        bubbleFirstLetter.setTitle(" ", for: .normal)
-        bubbleSecondLetter.setTitle(" ", for: .normal)
-        bubbleThirdLetter.setTitle(" ", for: .normal)
-        bubbleFourthLetter.setTitle(" ", for: .normal)
+        for bubs in bubbles {
+            bubs.setTitle(" ", for: .normal)
+            bubs.isOn = true
+        }
         
-        selectThisBubble(bubble: 1)
+        selectThisBubble(bubble: 0)
     }
     
     @IBAction func previousBubbleFunction(_ sender: Any) {
-        if (lastBubbleSelected != 1) {
+        if (lastBubbleSelected != 0) {
             selectThisBubble(bubble: lastBubbleSelected - 1)
         } else {
-            selectThisBubble(bubble: lastBubbleSelected)
+            selectThisBubble(bubble: 3)
         }
     }
     @IBAction func nextBubbleFunction(_ sender: Any) {
-        if (lastBubbleSelected != 4) {
-            selectThisBubble(bubble: lastBubbleSelected + 1)
-        } else {
-            selectThisBubble(bubble: lastBubbleSelected)
-        }
+        selectNextBubble()
     }
     @IBAction func giveUpFunction(_ sender: Any) {
         gameOver(won: false)
     }
     
-    @IBAction func bubbleFirstClicked(_ sender: Any) {
-        guessField.becomeFirstResponder()
-        guessField.selectedTextRange = guessField.textRange(from: guessField.beginningOfDocument, to: guessField.position(from: guessField.endOfDocument, offset: -3)!)
-        bubbleFirstLetter.backgroundColor = turquoise
-        bubbleSecondLetter.backgroundColor = ice
-        bubbleThirdLetter.backgroundColor = ice
-        bubbleFourthLetter.backgroundColor = ice
-        
-        lastBubbleSelected = 1
-        
-        nextBubble.isEnabled = true
-        previousBubble.isEnabled = false
+    @IBAction func bubbleClicked(_ sender: Bubble) {
+        let bubbleIndex = sender.tag
+        for bubs in bubbles {
+            bubs.backgroundColor = ice
+        }
+        bubbles[bubbleIndex].backgroundColor = turquoise
+        lastBubbleSelected = bubbleIndex
     }
     
-    @IBAction func bubbleSecondClicked(_ sender: Any) {
-        guessField.becomeFirstResponder()
-        guessField.selectedTextRange = guessField.textRange(from: guessField.position(from: guessField.endOfDocument, offset: -3)!, to: guessField.position(from: guessField.endOfDocument, offset: -2)!)
-        
-        bubbleFirstLetter.backgroundColor = ice
-        bubbleSecondLetter.backgroundColor = turquoise
-        bubbleThirdLetter.backgroundColor = ice
-        bubbleFourthLetter.backgroundColor = ice
-        
-        lastBubbleSelected = 2
-        
-        nextBubble.isEnabled = true
-        previousBubble.isEnabled = true
+    func bubbleClicked(bubbleIndex: Int) {
+        for bubs in bubbles {
+            bubs.backgroundColor = ice
+        }
+        bubbles[bubbleIndex].backgroundColor = turquoise
+        lastBubbleSelected = bubbleIndex
     }
-    
-    @IBAction func bubbleThirdClicked(_ sender: Any) {
-        guessField.becomeFirstResponder()
-        guessField.selectedTextRange = guessField.textRange(from: guessField.position(from: guessField.endOfDocument, offset: -2)!, to: guessField.position(from: guessField.endOfDocument, offset: -1)!)
+
+//    func changeGuess() {
+//        currentGuess = ""
+//        for bubs in bubbles {
+//            if (bubs.titleLabel!.text! != " ") {
+//                currentGuess += bubs.titleLabel!.text!
+//            }
+//        }
+//        print("huhhhhhhh + \(currentGuess)")
+//        guessField.text = currentGuess
+//
+//        //necessary?
+//        //textChange((Any).self)
+//        examineGuess(currGuess: currentGuess)
+//    }
+
+    func examineGuess(currGuess: String) {
+        let currGuessWOSpaces = currGuess.replacingOccurrences(of: " ", with: "")
+        hasRepeatingLetters = false
         
-        bubbleFirstLetter.backgroundColor = ice
-        bubbleSecondLetter.backgroundColor = ice
-        bubbleThirdLetter.backgroundColor = turquoise
-        bubbleFourthLetter.backgroundColor = ice
+        if (currGuessWOSpaces == "") {
+            clear.isEnabled = false
+        } else {
+            clear.isEnabled = true
+        }
         
-        lastBubbleSelected = 3
-        
-        nextBubble.isEnabled = true
-        previousBubble.isEnabled = true
-    }
-    
-    @IBAction func bubbleFourthClicked(_ sender: Any) {
-        guessField.becomeFirstResponder()
-        guessField.selectedTextRange = guessField.textRange(from: guessField.position(from: guessField.endOfDocument, offset: -1)!, to: guessField.endOfDocument)
-        
-        bubbleFirstLetter.backgroundColor = ice
-        bubbleSecondLetter.backgroundColor = ice
-        bubbleThirdLetter.backgroundColor = ice
-        bubbleFourthLetter.backgroundColor = turquoise
-        
-        lastBubbleSelected = 4
-        
-        nextBubble.isEnabled = false
-        previousBubble.isEnabled = true
-    }
-    
-    
-    @IBAction func textChange(_ sender: Any) {
-        guessField.text = guessField.text?.uppercased()
-        if var textInputtedWithSpaces = guessField.text {
-            let textInputted = textInputtedWithSpaces.replacingOccurrences(of: " ", with: "")
-            hasRepeatingLetters = false
-            if (textInputted == "") {
-                clear.isEnabled = false
-            } else {
-                clear.isEnabled = true
+        if (currGuessWOSpaces.count == 4) {
+            if (!allPossibleWords.contains(currGuess.lowercased())) {
+                info.text = "This is not a guessable word"
+                fadeViewInThenOut(view: info, delay: 2)
             }
-            if (textInputted.count == 4) {
-                
-                if (!allPossibleWords.contains(textInputted.lowercased())) {
-                    info.text = "This is not a guessable word"
-                    fadeViewInThenOut(view: info, delay: 2)
-                }
-            }
-            if (textInputted.count > 1) {
-                var count = 0
-                for (position1, char1) in textInputted.enumerated() {
-                    for (position2, char2) in textInputted.enumerated() {
-                        if (char1 == char2 && position1 != position2) {
-                            count += 1
-                        }
-                    }
-                }
-                if (count > 0) {
-                    info.text = "Warning: Cannot have repeating letters"
-                    hasRepeatingLetters = true
-                    fadeViewInThenOut(view: info, delay: 2)
-                }
-                
-            }
-            if (pastGuesses.contains(textInputted)) {
+            if (pastGuesses.contains(currGuess)) {
                 info.text = "You have already guessed this word"
                 fadeViewInThenOut(view: info, delay: 2)
             }
-            
-            if (textInputted.count > 4) {
-                guessField.text = textInputtedWithSpaces.substring(to: textInputted.index(textInputted.startIndex, offsetBy: 4))
+        }
+        
+        if (currGuessWOSpaces.count > 1) {
+            var count = 0
+            for (position1, char1) in currGuessWOSpaces.enumerated() {
+                for (position2, char2) in currGuessWOSpaces.enumerated() {
+                    if (char1 == char2 && position1 != position2) {
+                        count += 1
+                    }
+                }
             }
-
-            var inputArray: [Character] = [textInputtedWithSpaces[textInputtedWithSpaces.startIndex], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 1)], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 2)], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 3)]]
+            if (count > 0) {
+                info.text = "Warning: Cannot have repeating letters"
+                hasRepeatingLetters = true
+                fadeViewInThenOut(view: info, delay: 2)
+            } else {
+                hasRepeatingLetters = false
+            }
             
-            bubbleFirstLetter.setTitle("\(inputArray[0])", for: .normal)
-            bubbleSecondLetter.setTitle("\(inputArray[1])", for: .normal)
-            bubbleThirdLetter.setTitle("\(inputArray[2])", for: .normal)
-            bubbleFourthLetter.setTitle("\(inputArray[3])", for: .normal)
-            
-            selectNextBubble(previousBubble: lastBubbleSelected)
         }
     }
     
-    func selectNextBubble(previousBubble: Int) -> Bool {
-        
-        let bubbleArray = [bubbleFirstLetter, bubbleSecondLetter, bubbleThirdLetter, bubbleFourthLetter]
-        
-        if (previousBubble != 4) {
-            selectThisBubble(bubble: previousBubble + 1)
+//    @IBAction func textChange(_ sender: Any) {
+//        guessField.text = guessField.text?.uppercased()
+//        if var textInputtedWithSpaces = guessField.text {
+//            let textInputted = textInputtedWithSpaces.replacingOccurrences(of: " ", with: "")
+//            hasRepeatingLetters = false
+//            if (textInputted == "") {
+//                clear.isEnabled = false
+//            } else {
+//                clear.isEnabled = true
+//            }
+//            if (textInputted.count == 4) {
+//
+//                if (!allPossibleWords.contains(textInputted.lowercased())) {
+//                    info.text = "This is not a guessable word"
+//                    fadeViewInThenOut(view: info, delay: 2)
+//                }
+//            }
+//            if (textInputted.count > 1) {
+//                var count = 0
+//                for (position1, char1) in textInputted.enumerated() {
+//                    for (position2, char2) in textInputted.enumerated() {
+//                        if (char1 == char2 && position1 != position2) {
+//                            count += 1
+//                        }
+//                    }
+//                }
+//                if (count > 0) {
+//                    info.text = "Warning: Cannot have repeating letters"
+//                    hasRepeatingLetters = true
+//                    fadeViewInThenOut(view: info, delay: 2)
+//                }
+//
+//            }
+//            if (pastGuesses.contains(textInputted)) {
+//                info.text = "You have already guessed this word"
+//                fadeViewInThenOut(view: info, delay: 2)
+//            }
+//
+//            if (textInputted.count > 4) {
+//                guessField.text = textInputtedWithSpaces.substring(to: textInputted.index(textInputted.startIndex, offsetBy: 4))
+//            }
+//
+//            var inputArray: [Character] = [textInputtedWithSpaces[textInputtedWithSpaces.startIndex], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 1)], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 2)], textInputtedWithSpaces[textInputtedWithSpaces.index(textInputtedWithSpaces.startIndex, offsetBy: 3)]]
+//
+//            bubbles[0].setTitle("\(inputArray[0])", for: .normal)
+//            bubbles[1].setTitle("\(inputArray[1])", for: .normal)
+//            bubbles[2].setTitle("\(inputArray[2])", for: .normal)
+//            bubbles[3].setTitle("\(inputArray[3])", for: .normal)
+//
+//            selectNextBubble()
+//        }
+//    }
+    
+    func selectNextBubble() {
+        print("huhhh")
+        if (lastBubbleSelected != 3) {
+            selectThisBubble(bubble: lastBubbleSelected + 1)
         } else {
-            selectThisBubble(bubble: 1)
+            selectThisBubble(bubble: 0)
         }
         
-        return false
     }
     
     func selectThisBubble(bubble: Int) {
-        if (bubble == 1) {
-            bubbleFirstClicked((Any).self)
+        if (bubble == 0) {
+            bubbleClicked(bubbleIndex: 0)
+        } else if (bubble == 1) {
+            bubbleClicked(bubbleIndex: 1)
         } else if (bubble == 2) {
-            bubbleSecondClicked((Any).self)
+            bubbleClicked(bubbleIndex: 2)
         } else if (bubble == 3) {
-            bubbleThirdClicked((Any).self)
-        } else if (bubble == 4) {
-            bubbleFourthClicked((Any).self)
+            bubbleClicked(bubbleIndex: 3)
         }
     }
     
-    func returnThisBubble(bubble: Int) -> UIButton {
-        if (bubble == 1) {
-            return bubbleFirstLetter
-        } else if (bubble == 2) {
-            return bubbleSecondLetter
-        } else if (bubble == 3) {
-            return bubbleThirdLetter
+    
+    func performGuess(currGuess: String) {
+
+        selectThisBubble(bubble: 0)
+        if (currGuess.count != 4) {
+            info.text = "Submit a word with 4 letters"
+            fadeViewInThenOut(view: info, delay: 2)
+        } else if (hasRepeatingLetters) {
+            info.text = "Your guess must not have repeating letters"
+            fadeViewInThenOut(view: info, delay: 2)
+        }else if (pastGuesses.contains(currGuess)) {
+            info.text = "You cannot guess a word you have already guessed"
+            fadeViewInThenOut(view: info, delay: 2)
+        } else if (!allPossibleWords.contains(currGuess.lowercased())) {
+            info.text = "This is not a guessable word"
+            fadeViewInThenOut(view: info, delay: 2)
         } else {
-            return bubbleFourthLetter
+            pastGuesses.insert(currGuess, at: 0)
+            guessChecker(guess: currGuess)
         }
-    }
-    
-    func performGuess() {
-        if let textInputted = guessField.text {
-            selectThisBubble(bubble: 1)
-            if (textInputted.count != 4) {
-                info.text = "Submit a word with 4 letters"
-                fadeViewInThenOut(view: info, delay: 2)
-            } else if (hasRepeatingLetters) {
-                info.text = "Your guess must not have repeating letters"
-                fadeViewInThenOut(view: info, delay: 2)
-            }else if (pastGuesses.contains(textInputted)) {
-                info.text = "You cannot guess a word you have already guessed"
-                fadeViewInThenOut(view: info, delay: 2)
-            } else if (!allPossibleWords.contains(textInputted.lowercased())) {
-                info.text = "This is not a guessable word"
-                fadeViewInThenOut(view: info, delay: 2)
-            } else {
-                pastGuesses.insert(textInputted, at: 0)
-                guessChecker(guess: textInputted)
-            }
-        }
+        
     }
     
     
@@ -310,7 +315,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         guessTable.delegate = self
         guessTable.dataSource = self
         
-        for (index, key) in keyboardKeys.enumerated() {
+        
+        for key in keyboardKeys {
             let keyTitle: Character = Character((key.titleLabel?.text!)!)
             key.setLetter(theLetter: keyTitle)
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
@@ -318,6 +324,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             keyboardKeyLongPressRecognizers.append(gestureRecognizer)
             key.addGestureRecognizer(gestureRecognizer)
         }
+        
+//        for bubs in bubbles {
+//            let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
+//            gestureRecognizer.minimumPressDuration = 0.6
+//            keyboardKeyLongPressRecognizers.append(gestureRecognizer)
+//            key.addGestureRecognizer(gestureRecognizer)
+//        }
         
         print("Dll: \(difficultyLevel)")
 
@@ -371,12 +384,12 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         guessField.autocorrectionType = .no
         fadeViewInThenOut(view: info, delay: 2)
         
-        bubbleFirstLetter.setTitle(" ", for: .normal)
-        bubbleSecondLetter.setTitle(" ", for: .normal)
-        bubbleThirdLetter.setTitle(" ", for: .normal)
-        bubbleFourthLetter.setTitle(" ", for: .normal)
+        bubbles[0].setTitle(" ", for: .normal)
+        bubbles[1].setTitle(" ", for: .normal)
+        bubbles[2].setTitle(" ", for: .normal)
+        bubbles[3].setTitle(" ", for: .normal)
         
-        selectThisBubble(bubble: 1)
+        selectThisBubble(bubble: 0)
         
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(GameViewController.updateTime)), userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate
@@ -387,68 +400,69 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     
     //For some reason, we need to delay before the text can select initially
-    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            completion()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(true)
-        delayWithSeconds(0.0001) {
-            self.guessField.selectedTextRange = self.guessField.textRange(from: self.guessField.beginningOfDocument, to: self.guessField.position(from: self.guessField.endOfDocument, offset: -3)!)
-        }
-    }
+//    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+//            completion()
+//        }
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        super.viewWillAppear(true)
+//        delayWithSeconds(0.0001) {
+//            self.guessField.selectedTextRange = self.guessField.textRange(from: self.guessField.beginningOfDocument, to: self.guessField.position(from: self.guessField.endOfDocument, offset: -3)!)
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    //not sure what this does
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        performGuess()
+        performGuess(currGuess: currentGuess)
         return false
     }
     
   
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        var onlyCharacters: Bool = true
-        
-        info.text = ""
-
-        guard let text = textField.text else { return true }
-        let newLength = text.characters.count + string.characters.count - range.length
-        if newLength > 4 {
-            info.text = "Cannot enter more than 4 letters"
-            fadeViewInThenOut(view: info, delay: 2)
-        }
-
-        let characterSet = CharacterSet.letters
-        if string.rangeOfCharacter(from: characterSet.inverted) != nil {
-            onlyCharacters = false
-        } else {
-            onlyCharacters = true
-        }
-        
-        let  char = string.cString(using: String.Encoding.utf8)!
-        let isBackSpace = strcmp(char, "\\b")
-        
-        if (isBackSpace == -92) {
-            returnThisBubble(bubble: lastBubbleSelected).setTitle(" ", for: .normal)
-            guessField.text = replace(myString: guessField.text!, lastBubbleSelected - 1, " ")
-            if (lastBubbleSelected != 1) {
-                selectThisBubble(bubble: lastBubbleSelected - 1)
-            } else {
-                selectThisBubble(bubble: lastBubbleSelected)
-            }
-            return false
-        }
-
-        return (newLength <= limitLength) && onlyCharacters
-        
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//        var onlyCharacters: Bool = true
+//
+//        info.text = ""
+//
+//        guard let text = textField.text else { return true }
+//        let newLength = text.characters.count + string.characters.count - range.length
+//        if newLength > 4 {
+//            info.text = "Cannot enter more than 4 letters"
+//            fadeViewInThenOut(view: info, delay: 2)
+//        }
+//
+//        let characterSet = CharacterSet.letters
+//        if string.rangeOfCharacter(from: characterSet.inverted) != nil {
+//            onlyCharacters = false
+//        } else {
+//            onlyCharacters = true
+//        }
+//
+//        let char = string.cString(using: String.Encoding.utf8)!
+//        let isBackSpace = strcmp(char, "\\b")
+//
+//        if (isBackSpace == -92) {
+//            bubbles[lastBubbleSelected].setTitle(" ", for: .normal)
+//            guessField.text = replace(myString: guessField.text!, lastBubbleSelected - 1, " ")
+//            if (lastBubbleSelected != 1) {
+//                selectThisBubble(bubble: lastBubbleSelected - 1)
+//            } else {
+//                selectThisBubble(bubble: lastBubbleSelected)
+//            }
+//            return false
+//        }
+//
+//        return (newLength <= limitLength) && onlyCharacters
+//
+//    }
     
     func replace(myString: String, _ index: Int, _ newChar: Character) -> String {
         var chars = Array(myString.characters)     // gets an array of characters
@@ -505,12 +519,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         nextBubble.isEnabled = false
         clear.isEnabled = false
         previousBubble.isEnabled = false
-        bubbleFirstLetter.isEnabled = false
-        bubbleSecondLetter.isEnabled = false
-        bubbleThirdLetter.isEnabled = false
-        bubbleFourthLetter.isEnabled = false
+        bubbles[0].isEnabled = false
+        bubbles[1].isEnabled = false
+        bubbles[2].isEnabled = false
+        bubbles[3].isEnabled = false
         guessField.resignFirstResponder()
         for key: Key in keyboardKeys {
+            key.isOn = false
             key.isEnabled = false
         }
     }

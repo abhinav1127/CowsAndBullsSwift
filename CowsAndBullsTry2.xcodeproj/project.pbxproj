@@ -11,6 +11,7 @@
 		E603E9431FE99E9F008BC5B0 /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */; };
 		E603E94A1FE99EFC008BC5B0 /* bull.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9461FE99EFC008BC5B0 /* bull.png */; };
 		E603E94C1FE99EFC008BC5B0 /* cow.png in Resources */ = {isa = PBXBuildFile; fileRef = E603E9481FE99EFC008BC5B0 /* cow.png */; };
+		E61B8E0C20229CEF00A48EB4 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61B8E0B20229CEF00A48EB4 /* Bubble.swift */; };
 		E63C82DD200E7DFA008B4F9B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63C82DC200E7DFA008B4F9B /* Key.swift */; };
 		E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */; };
 		E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349511FD5FE34004DAB2A /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		E603E93F1FE99E9F008BC5B0 /* EasyWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EasyWords.txt; path = Assets.xcassets/EasyWords.txt; sourceTree = "<group>"; };
 		E603E9461FE99EFC008BC5B0 /* bull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bull.png; path = Assets.xcassets/bull.png; sourceTree = "<group>"; };
 		E603E9481FE99EFC008BC5B0 /* cow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cow.png; path = Assets.xcassets/cow.png; sourceTree = "<group>"; };
+		E61B8E0B20229CEF00A48EB4 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		E63C82DC200E7DFA008B4F9B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		E69CBEC92007DC3B002B6169 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		E69CBECB2007DC3B002B6169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E63C82DC200E7DFA008B4F9B /* Key.swift */,
+				E61B8E0B20229CEF00A48EB4 /* Bubble.swift */,
 				E6C349511FD5FE34004DAB2A /* AppDelegate.swift */,
 				E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */,
 				E6C349531FD5FE34004DAB2A /* GameViewController.swift */,
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */,
+				E61B8E0C20229CEF00A48EB4 /* Bubble.swift in Sources */,
 				E63C82DD200E7DFA008B4F9B /* Key.swift in Sources */,
 				E6C349541FD5FE34004DAB2A /* GameViewController.swift in Sources */,
 				E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */,
