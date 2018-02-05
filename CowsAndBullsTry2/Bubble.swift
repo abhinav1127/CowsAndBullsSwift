@@ -10,16 +10,18 @@ import UIKit
 
 class Bubble: UIButton {
 
-    
+    static var numOn = 4
     var isOn: Bool = true
 
     func changeState() {
         if (isOn) {
+            Bubble.numOn -= 1
             isOn = false
-            self.setTitleColor(UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1), for: .normal)
+            self.backgroundColor = UIColor.gray
         } else {
+            Bubble.numOn += 1
             isOn = true
-            self.setTitleColor(.blue, for: .normal)
+            self.backgroundColor = GameViewController.ice
             
         }
     }
