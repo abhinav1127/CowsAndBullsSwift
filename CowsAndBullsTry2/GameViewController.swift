@@ -10,11 +10,13 @@ import UIKit
 
 class GameViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var giveUp: UIButton!
+    @IBOutlet weak var enable: UIButton!
+    @IBOutlet weak var giveUp: UIBarButtonItem!
     @IBOutlet weak var nextBubble: UIButton!
     @IBOutlet weak var clear: UIButton!
     @IBOutlet weak var previousBubble: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var backspaceButton: UIButton!
     
     @IBOutlet weak var info: UITextView!
     @IBOutlet weak var guessTable: UITableView!
@@ -28,7 +30,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     let turquoise = UIColor(red: 118/255, green: 214/255, blue: 255/255, alpha: 1)
     var lastBubbleSelected = 0
     var hasRepeatingLetters = false
-    var difficultyLevel = 0
     
     
     @IBOutlet var keyboardKeys: [Key]!
@@ -42,6 +43,28 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     var startTime = TimeInterval()
     var timer = Timer()
     
+    @IBOutlet weak var navigation: UINavigationItem!
+    
+    var wordsFilePath: String?
+    
+    
+    @IBAction func backspacePressed(_ sender: Any) {
+        previousBubbleFunction(sender)
+        info.text = ""
+        bubbles[lastBubbleSelected].setTitle(" ", for: .normal)
+        currentGuess = replace(myString: currentGuess, lastBubbleSelected, " ")
+        
+    }
+    @IBAction func enableAllKeys(_ sender: Any) {
+        for key in keyboardKeys {
+            if (!key.isOn) {
+                key.changeState()
+            }
+        }
+        info.text = "All keys enabled!"
+        fadeViewInThenOut(view: info, delay: 2)
+    }
+    
     @IBAction func KeyboardClicked(_ sender: Key) {
         // convert Int to a valid UnicodeScalar
         
@@ -50,7 +73,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             bubbles[lastBubbleSelected].setTitle("\(String(sender.letter))", for: .normal)
             currentGuess = replace(myString: currentGuess, lastBubbleSelected, sender.letter)
             examineGuess(currGuess: currentGuess)
-            selectNextBubble()
+            selectNextBubble(fromNextFunc: false)
         } else {
             info.text = "\(sender.letter) has been disabled. Hold it to enable."
             fadeViewInThenOut(view: info, delay: 2)
@@ -66,9 +89,21 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         
         let theView = sender.view
         let theKey = (theView as! Key)
-        
+        print(43)
+
         if (sender.state == UIGestureRecognizerState.began) {
-            theKey.changeState()
+            if let titleText = theKey.titleLabel?.text {
+                if (titleText == " ") {
+                    info.text = "Cannot lock an empty bubble"
+                    fadeViewInThenOut(view: info, delay: 2)
+                } else {
+                    print(33)
+                    theKey.changeState()
+                }
+            } else {
+                print("Error 27")
+            }
+
         }
         
     }
@@ -76,22 +111,33 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     //combine this method and the one above
     @objc @IBAction func bubbleHeld(sender: UILongPressGestureRecognizer) {
         
+        print(Bubble.numOn)
         let theView = sender.view
         let theBubble = (theView as! Bubble)
         
         if (sender.state == UIGestureRecognizerState.began) {
-            if (Bubble.numOn != 1) {
-                theBubble.changeState()
-                if (theBubble.tag == lastBubbleSelected) {
-                    selectNextBubble()
-                }
-            } else {
-                if (!theBubble.isOn) {
-                    theBubble.changeState()
+            if (theBubble.isOn) {
+                if (Bubble.numOn > 1) {
+                    if let titleText = theBubble.titleLabel?.text {
+                        if (titleText == " ") {
+                            info.text = "Cannot lock an empty bubble"
+                            fadeViewInThenOut(view: info, delay: 2)
+                        } else {
+                            theBubble.changeState()
+                            if (theBubble.tag == lastBubbleSelected) {
+                                selectNextBubble(fromNextFunc: false)
+                            }
+                        }
+                    } else {
+                        print("Error 27")
+                    }
                 } else {
                     info.text = "Cannot lock all bubbles"
                     fadeViewInThenOut(view: info, delay: 2)
                 }
+            } else {
+                theBubble.changeState()
+                selectThisBubble(bubble: theBubble.tag)
             }
         }
         
@@ -124,8 +170,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         let strFraction = String(format: "%02d", fraction)
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
-        timerLabel.text = "\(strMinutes):\(strSeconds)"
-        
+        navigation.title = "\(strMinutes):\(strSeconds)"
     }
 
     
@@ -157,7 +202,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             if (counter == -1) {
                 counter = 3
             }
-            if (bubbles[lastBubbleSelected].isOn) {
+            if (bubbles[counter].isOn) {
                 selectThisBubble(bubble: counter)
                 assigned = true
             }
@@ -169,10 +214,66 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         }
     }
     @IBAction func nextBubbleFunction(_ sender: Any) {
-        selectNextBubble()
+        selectNextBubble(fromNextFunc: true)
     }
-    @IBAction func giveUpFunction(_ sender: Any) {
-        gameOver(won: false)
+    @IBAction func giveUpFunction(_ sender: UIBarButtonItem) {
+        if (sender.title == "Give Up") {
+            gameOver(won: false)
+        } else {
+            restartGame()
+        }
+    }
+    
+    func restartGame() {
+        cowsArray = []
+        bullsArray = []
+        pastGuesses = []
+        lastBubbleSelected = 0
+        hasRepeatingLetters = false
+        currentGuess = "    "
+        self.guessTable.reloadData()
+        nextBubble.isEnabled = true
+        clear.isEnabled = true
+        previousBubble.isEnabled = true
+        enable.isEnabled = true
+        for bubs in bubbles {
+            bubs.isEnabled = true
+            if (!bubs.isOn) {
+                bubs.backgroundColor = GameViewController.ice
+                bubs.changeState()
+            }
+        }
+        backspaceButton.isEnabled = true
+        submitButton.isEnabled = true
+        for key: Key in keyboardKeys {
+            key.isEnabled = true
+            if (!key.isOn) {
+                key.changeState()
+            }
+        }
+        navigation.title = "00:00"
+        giveUp.title = "Give Up"
+        info.text = "Enter a guess!"
+        fadeViewInThenOut(view: info, delay: 2)
+        bubbles[0].setTitle(" ", for: .normal)
+        bubbles[1].setTitle(" ", for: .normal)
+        bubbles[2].setTitle(" ", for: .normal)
+        bubbles[3].setTitle(" ", for: .normal)
+        bubbleClicked(bubbles[0])
+        do {
+            let wordsString = try String(contentsOfFile: wordsFilePath!)
+            
+            let wordLines = wordsString.components(separatedBy: .newlines)
+            
+            let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
+            
+            word = randomLine.uppercased()
+            
+            print(word + "Finder")
+            
+        } catch { // contentsOfFile throws an error
+            print("Error: \(error)")
+        }
     }
     
     @IBAction func bubbleClicked(_ sender: Bubble) {
@@ -237,7 +338,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         }
     }
     
-    func selectNextBubble() {
+    func selectNextBubble(fromNextFunc: Bool) {
         var assigned = false
         var counter = lastBubbleSelected + 1
         let originalBubble = lastBubbleSelected
@@ -251,7 +352,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             }
             counter += 1
         }
-        if (originalBubble == lastBubbleSelected) {
+        if (fromNextFunc && originalBubble == lastBubbleSelected) {
             info.text = "All other bubbles are locked. Hold to unlock"
             fadeViewInThenOut(view: info, delay: 2)
         }
@@ -291,48 +392,65 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             guessChecker(guess: currGuess)
         }
         
+        print(Bubble.numOn)
+
+        
     }
     
+    private func adjustImageAndTitleOffsetsForButton(button: UIButton) {
+        
+        let spacing: CGFloat = 6.0
+        
+        let imageSize = button.imageView!.frame.size
+        
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -(imageSize.height + spacing), 0)
+        
+        let titleSize = button.titleLabel!.frame.size
+        
+        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0, 0, -titleSize.width)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        info.textAlignment = .center
+        Bubble.numOn = 4
         guessTable.delegate = self
         guessTable.dataSource = self
-        
+        print("num on: \(Bubble.numOn)")
         
         for key in keyboardKeys {
             let keyTitle: Character = Character((key.titleLabel?.text!)!)
             key.setLetter(theLetter: keyTitle)
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
-            gestureRecognizer.minimumPressDuration = 0.6
+            gestureRecognizer.minimumPressDuration = 0.45
             keyboardKeyLongPressRecognizers.append(gestureRecognizer)
             key.addGestureRecognizer(gestureRecognizer)
         }
         
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.clearBubbles(_:)))
+        gestureRecognizer.minimumPressDuration = 0.45
+        backspaceButton.addGestureRecognizer(gestureRecognizer)
+        
         for bubs in bubbles {
+            bubs.layer.cornerRadius = bubs.frame.width / 2
+            bubs.clipsToBounds = true
+            self.adjustImageAndTitleOffsetsForButton(button: bubs)
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.bubbleHeld(sender:)))
-            gestureRecognizer.minimumPressDuration = 0.6
+            gestureRecognizer.minimumPressDuration = 0.45
             bubblesLongPressRecognizers.append(gestureRecognizer)
             bubs.addGestureRecognizer(gestureRecognizer)
         }
 
-        print("Dll: \(difficultyLevel)")
+        print("Dll: \(DifficultyViewController.difficultyLevel)")
 
-        if let wordsFilePath = Bundle.main.path(forResource: "CBwords", ofType: "txt") {
+        if let wordsFilePath1 = Bundle.main.path(forResource: "CBWords", ofType: "txt") {
+            print("hello")
             do {
-                let wordsString = try String(contentsOfFile: wordsFilePath)
+                let wordsString = try String(contentsOfFile: wordsFilePath1)
                 
                 let wordLines = wordsString.components(separatedBy: .newlines)
                 
                 allPossibleWords = wordLines
-                
-                if (difficultyLevel != 1) {
-                    let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
-                    
-                    word = randomLine.uppercased()
-                    
-                    print(word + "Finder")
-                }
                 
             } catch { // contentsOfFile throws an error
                 print("Error: \(error)")
@@ -340,27 +458,31 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             
         }
         
-        if (difficultyLevel == 1) {
-            
-            if let wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt") {
-                
-                do {
-                    let wordsString = try String(contentsOfFile: wordsFilePath)
-                    
-                    let wordLines = wordsString.components(separatedBy: .newlines)
-                    
-                    let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
-                    
-                    word = randomLine.uppercased()
-                    
-                    print(word + "Finder")
-                    
-                } catch { // contentsOfFile throws an error
-                    print("Error: \(error)")
-                }
-            }
-            
+        if (DifficultyViewController.difficultyLevel == 1) {
+            wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+        } else if (DifficultyViewController.difficultyLevel == 2) {
+            wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+        } else if (DifficultyViewController.difficultyLevel == 3) {
+            wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+        } else {
+            wordsFilePath = Bundle.main.path(forResource: "VeryHardWords", ofType: "txt")
         }
+                
+        do {
+            let wordsString = try String(contentsOfFile: wordsFilePath!)
+            
+            let wordLines = wordsString.components(separatedBy: .newlines)
+            
+            let randomLine = wordLines[numericCast(arc4random_uniform(numericCast(wordLines.count)))]
+            
+            word = randomLine.uppercased()
+            
+            print(word + "Finder")
+            
+        } catch { // contentsOfFile throws an error
+            print("Error: \(error)")
+        }
+        
         
         
         info.text = "Enter a guess!"
@@ -372,9 +494,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         bubbles[3].setTitle(" ", for: .normal)
         
         selectThisBubble(bubble: 0)
-        
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(GameViewController.updateTime)), userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate
         
     }
 
@@ -392,6 +511,10 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     }
     
     func guessChecker(guess: String) {
+        if (pastGuesses.count == 1) {
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(GameViewController.updateTime)), userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate
+        }
         
         var cows = 0
         var bulls = 0
@@ -418,7 +541,14 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         if (bulls == 4) {
             gameOver(won: true)
         }
-        
+        print(currentGuess)
+        if (cows == 0 && bulls == 0) {
+            for key in keyboardKeys {
+                if (currentGuess.contains(Character(key.titleLabel!.text!)) && key.isOn) {
+                    key.changeState()
+                }
+            }
+        }
         cowsArray.insert(cows, at: 0)
         bullsArray.insert(bulls, at: 0)
         self.guessTable.reloadData()
@@ -426,30 +556,38 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     func gameOver(won: Bool) {
         timer.invalidate()
-        timer == nil
         if (won) {
-            info.text = "Correct! You got it in \(pastGuesses.count) guesses and \(timerLabel.text!)!"
+            if (pastGuesses.count != 1) {
+                info.text = "Correct! You got it in \(pastGuesses.count) guesses and \(navigation.title!)!"
+            } else {
+                info.text = "Correct! You got it in 1 guess! How's that even possible?"
+            }
             fadeViewInThenOut(view: info, delay: 10000)
 
         } else {
             info.text = "The word was \(word)!"
             fadeViewInThenOut(view: info, delay: 10000)
         }
-        giveUp.isEnabled = false
         nextBubble.isEnabled = false
         clear.isEnabled = false
         previousBubble.isEnabled = false
-        bubbles[0].isEnabled = false
-        bubbles[1].isEnabled = false
-        bubbles[2].isEnabled = false
-        bubbles[3].isEnabled = false
+        enable.isEnabled = false
+        for bubs in bubbles {
+            bubs.backgroundColor = UIColor.gray
+            bubs.isEnabled = false
+        }
+        submitButton.isEnabled = false
         for key: Key in keyboardKeys {
             if (key.isOn) {
                 key.changeState()
             }
             key.isEnabled = false
         }
+        backspaceButton.isEnabled = false
+        giveUp.title = "Play Again"
+        
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pastGuesses.count

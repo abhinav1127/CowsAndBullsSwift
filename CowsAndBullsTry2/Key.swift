@@ -19,7 +19,8 @@ class Key: UIButton {
             self.setTitleColor(UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1), for: .normal)
         } else {
             isOn = true
-            self.setTitleColor(.blue, for: .normal)
+            self.setTitleColor(UIColor(red: 0/255, green: 154/255, blue: 221/255, alpha: 1), for: .normal
+            )
 
         }
     }

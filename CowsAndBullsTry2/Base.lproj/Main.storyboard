@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o7h-at-DIV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o7h-at-DIV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-Bold</string>
+        </array>
+        <array key="Courier.ttc">
+            <string>Courier-Bold</string>
+        </array>
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Difficulty View Controller-->
         <scene sceneID="bGK-2j-MTq">
@@ -20,50 +32,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75l-OP-foO">
-                                <rect key="frame" x="171" y="200" width="33" height="30"/>
-                                <state key="normal" title="Easy"/>
-                                <connections>
-                                    <action selector="easyDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="hl9-md-9Cf"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Tfz-3x-8vc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-qE-Of0">
-                                <rect key="frame" x="153" y="278" width="69" height="30"/>
-                                <state key="normal" title="Very Hard"/>
-                                <connections>
-                                    <action selector="hardDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="D7B-1k-61s"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="rCZ-er-mQP"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="es0-Nj-sAc">
+                                <rect key="frame" x="153" y="260" width="69" height="234"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="iiE-QD-dhh">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="234"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75l-OP-foO">
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
+                                                <state key="normal" title="Easy"/>
+                                                <connections>
+                                                    <action selector="easyDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="hl9-md-9Cf"/>
+                                                    <segue destination="9sb-ik-4FV" kind="show" id="Tfz-3x-8vc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-zT-6yr">
+                                                <rect key="frame" x="0.0" y="68" width="69" height="30"/>
+                                                <state key="normal" title="Medium"/>
+                                                <connections>
+                                                    <action selector="easyDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="5JX-t5-EBY"/>
+                                                    <segue destination="9sb-ik-4FV" kind="presentation" id="bkE-E1-NKL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-sF-JPX">
+                                                <rect key="frame" x="0.0" y="136" width="69" height="30"/>
+                                                <state key="normal" title="Hard"/>
+                                                <connections>
+                                                    <action selector="easyDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="sCq-yz-opx"/>
+                                                    <segue destination="9sb-ik-4FV" kind="presentation" id="0h1-R8-uQM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-qE-Of0">
+                                                <rect key="frame" x="0.0" y="204" width="69" height="30"/>
+                                                <state key="normal" title="Very Hard"/>
+                                                <connections>
+                                                    <action selector="easyDifficultySelected:" destination="o7h-at-DIV" eventType="touchUpInside" id="aU6-WQ-hHz"/>
+                                                    <segue destination="9sb-ik-4FV" kind="show" id="rCZ-er-mQP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a difficulty level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZx-Ee-wxd">
-                                <rect key="frame" x="101" y="129" width="172" height="21"/>
+                                <rect key="frame" x="102" y="211" width="171.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cows&amp;BullsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hWy-8f-Ehk">
+                                <rect key="frame" x="87" y="33" width="200" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="nxk-Tb-XRg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cows and Bulls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oez-0t-EVi">
+                                <rect key="frame" x="104.5" y="169" width="167.5" height="30"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="75l-OP-foO" firstAttribute="top" secondItem="kZx-Ee-wxd" secondAttribute="bottom" constant="50" id="Bej-bI-RSw"/>
-                            <constraint firstItem="75l-OP-foO" firstAttribute="centerX" secondItem="3Fv-qE-Of0" secondAttribute="centerX" id="DTw-qh-4ek"/>
-                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="top" secondItem="Mqm-Zm-YI9" secondAttribute="top" constant="109" id="Et2-Fw-FyP"/>
-                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="centerX" secondItem="75l-OP-foO" secondAttribute="centerX" id="Pfs-q5-tND"/>
-                            <constraint firstItem="3Fv-qE-Of0" firstAttribute="top" secondItem="75l-OP-foO" secondAttribute="bottom" constant="48" id="ghq-Na-mVy"/>
-                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="centerX" secondItem="CJs-UI-ezI" secondAttribute="centerX" id="hbs-4Q-qvm"/>
+                            <constraint firstItem="es0-Nj-sAc" firstAttribute="centerX" secondItem="CJs-UI-ezI" secondAttribute="centerX" id="1MX-G5-GkV"/>
+                            <constraint firstItem="hWy-8f-Ehk" firstAttribute="top" secondItem="Mqm-Zm-YI9" secondAttribute="top" constant="13" id="2Sc-ep-4Rv"/>
+                            <constraint firstItem="oez-0t-EVi" firstAttribute="top" secondItem="hWy-8f-Ehk" secondAttribute="bottom" constant="8" id="EE8-hJ-We5"/>
+                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="centerX" secondItem="CJs-UI-ezI" secondAttribute="centerX" id="G3k-BR-O0Q"/>
+                            <constraint firstItem="oez-0t-EVi" firstAttribute="centerX" secondItem="CJs-UI-ezI" secondAttribute="centerX" id="L3E-9f-0aq"/>
+                            <constraint firstItem="hWy-8f-Ehk" firstAttribute="centerX" secondItem="CJs-UI-ezI" secondAttribute="centerX" id="Udf-Ni-JNn"/>
+                            <constraint firstItem="es0-Nj-sAc" firstAttribute="top" secondItem="kZx-Ee-wxd" secondAttribute="bottom" constant="28.5" id="XYy-xA-mo3"/>
+                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="top" secondItem="hWy-8f-Ehk" secondAttribute="bottom" constant="50" id="YQS-jh-Ico"/>
+                            <constraint firstItem="kZx-Ee-wxd" firstAttribute="top" secondItem="Mqm-Zm-YI9" secondAttribute="top" constant="191" id="goy-4l-J6z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mqm-Zm-YI9"/>
                     </view>
-                    <connections>
-                        <outlet property="easyButton" destination="75l-OP-foO" id="l78-Ic-Xdt"/>
-                        <outlet property="hardButton" destination="3Fv-qE-Of0" id="5s0-pe-Tl4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jA-Uo-NZw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-759" y="58"/>
+            <point key="canvasLocation" x="-759.20000000000005" y="57.121439280359823"/>
         </scene>
-        <!--Game View Controller-->
+        <!--00:00-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="CowsAndBullsTry2" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,16 +121,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R6J-uj-9Vk">
-                                <rect key="frame" x="55" y="186" width="265" height="249"/>
+                                <rect key="frame" x="55" y="218" width="266" height="206"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="rV5-Jc-pcU">
-                                    <rect key="frame" x="0.0" y="0.0" width="265" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="266" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bull.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-E2-VB3">
-                                            <rect key="frame" x="191" y="6" width="66" height="48"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bull" translatesAutoresizingMaskIntoConstraints="NO" id="Dn4-E2-VB3">
+                                            <rect key="frame" x="192" y="6" width="66" height="48"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="9UM-Bg-BYX"/>
+                                                <constraint firstAttribute="width" secondItem="Dn4-E2-VB3" secondAttribute="height" multiplier="11:8" id="Hxc-Z5-7KH"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5He-zI-uVT">
@@ -90,55 +139,59 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cow.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-od-zGa">
-                                            <rect key="frame" x="112" y="9" width="60" height="42"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cow" translatesAutoresizingMaskIntoConstraints="NO" id="2Qf-od-zGa">
+                                            <rect key="frame" x="114.5" y="9" width="60" height="42"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="h9O-r1-bW6"/>
+                                                <constraint firstAttribute="width" secondItem="2Qf-od-zGa" secondAttribute="height" multiplier="10:7" id="kdP-K3-uD2"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.87125277079999996" green="1" blue="0.94641525699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="5He-zI-uVT" firstAttribute="leading" secondItem="rV5-Jc-pcU" secondAttribute="leading" constant="8" id="C3B-wN-qAa"/>
-                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="centerY" secondItem="rV5-Jc-pcU" secondAttribute="centerY" id="DR9-5J-dvS"/>
-                                        <constraint firstAttribute="trailing" secondItem="Dn4-E2-VB3" secondAttribute="trailing" constant="8" id="Fj5-yO-fLY"/>
-                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="leading" secondItem="2Qf-od-zGa" secondAttribute="trailing" constant="19" id="NJM-PJ-dLI"/>
-                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="top" secondItem="rV5-Jc-pcU" secondAttribute="top" constant="6" id="VRR-in-k52"/>
-                                        <constraint firstAttribute="bottom" secondItem="5He-zI-uVT" secondAttribute="bottom" constant="19" id="iFa-KB-sXX"/>
-                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="centerY" secondItem="2Qf-od-zGa" secondAttribute="centerY" id="nMV-Zm-IMw"/>
-                                        <constraint firstItem="2Qf-od-zGa" firstAttribute="top" secondItem="rV5-Jc-pcU" secondAttribute="top" constant="9" id="xbn-SP-5ea"/>
+                                        <constraint firstItem="2Qf-od-zGa" firstAttribute="centerY" secondItem="Dn4-E2-VB3" secondAttribute="centerY" id="7a4-RF-FtA"/>
+                                        <constraint firstItem="5He-zI-uVT" firstAttribute="centerY" secondItem="rV5-Jc-pcU" secondAttribute="centerY" id="CsT-9n-Vyv"/>
+                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="top" secondItem="rV5-Jc-pcU" secondAttribute="top" constant="6" id="Wfo-8U-TXe"/>
+                                        <constraint firstItem="Dn4-E2-VB3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2Qf-od-zGa" secondAttribute="trailing" constant="2" id="XIH-Ll-WX7"/>
+                                        <constraint firstItem="2Qf-od-zGa" firstAttribute="centerX" secondItem="rV5-Jc-pcU" secondAttribute="centerX" constant="12" id="cG6-as-tPr"/>
+                                        <constraint firstItem="5He-zI-uVT" firstAttribute="leading" secondItem="rV5-Jc-pcU" secondAttribute="leading" constant="8" id="jLC-zb-fLr"/>
+                                        <constraint firstItem="2Qf-od-zGa" firstAttribute="top" secondItem="rV5-Jc-pcU" secondAttribute="top" constant="9" id="l0J-uz-aRF"/>
+                                        <constraint firstItem="5He-zI-uVT" firstAttribute="centerY" secondItem="2Qf-od-zGa" secondAttribute="centerY" id="tRT-al-pQZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Dn4-E2-VB3" secondAttribute="trailing" constant="8" id="xzY-ca-YMa"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="40" id="hqp-KM-HMo" customClass="CustomTableViewCell" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="265" height="40"/>
+                                        <rect key="frame" x="0.0" y="88" width="266" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hqp-KM-HMo" id="ZK7-d7-5sL">
-                                            <rect key="frame" x="0.0" y="0.0" width="265" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="266" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRj-P5-83N" customClass="CustomTableViewCell" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-2" width="241" height="40"/>
+                                                    <rect key="frame" x="0.0" y="-22" width="245" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fh-OO-gzi">
-                                                            <rect key="frame" x="8" y="11" width="94" height="21"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Ri-wSL">
-                                                            <rect key="frame" x="120" y="11" width="43" height="21"/>
+                                                            <rect key="frame" x="8" y="31" width="43.5" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="43" id="VDj-F2-IIO"/>
+                                                                <constraint firstAttribute="width" secondItem="2Fh-OO-gzi" secondAttribute="height" multiplier="43:21" id="QGm-Ml-DQV"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml5-p3-J8s">
-                                                            <rect key="frame" x="200" y="11" width="37" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cows" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-Ri-wSL">
+                                                            <rect key="frame" x="119" y="31" width="45" height="22"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="37" id="oDM-M1-jsm"/>
+                                                                <constraint firstAttribute="width" secondItem="f3K-Ri-wSL" secondAttribute="height" multiplier="43:21" id="ME6-2C-m8J"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml5-p3-J8s">
+                                                            <rect key="frame" x="195.5" y="31" width="40.5" height="23"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Ml5-p3-J8s" secondAttribute="height" multiplier="37:21" id="6Eh-t9-VR1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -147,27 +200,23 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="bottom" secondItem="mRj-P5-83N" secondAttribute="bottomMargin" id="Hml-WN-UNt"/>
-                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="leading" secondItem="mRj-P5-83N" secondAttribute="leadingMargin" id="dkX-UH-j8a"/>
-                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="leading" secondItem="2Fh-OO-gzi" secondAttribute="trailing" constant="18" id="erW-We-Gwc"/>
-                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="baseline" secondItem="Ml5-p3-J8s" secondAttribute="baseline" id="f4h-zG-83f"/>
-                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="top" secondItem="mRj-P5-83N" secondAttribute="top" constant="11" id="jtv-nk-SHN"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ml5-p3-J8s" secondAttribute="trailing" constant="4" id="kCa-rw-Nzy"/>
-                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="baseline" secondItem="f3K-Ri-wSL" secondAttribute="baseline" id="kDg-Az-bGN"/>
-                                                        <constraint firstItem="Ml5-p3-J8s" firstAttribute="leading" secondItem="f3K-Ri-wSL" secondAttribute="trailing" constant="37" id="uIw-tg-7V6"/>
-                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="firstBaseline" secondItem="f3K-Ri-wSL" secondAttribute="firstBaseline" id="wHj-s1-tZ1"/>
-                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="firstBaseline" secondItem="Ml5-p3-J8s" secondAttribute="firstBaseline" id="xH3-GO-ir7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ml5-p3-J8s" secondAttribute="trailing" constant="9" id="5hJ-bw-QXf"/>
+                                                        <constraint firstAttribute="height" constant="60" id="6o0-4u-WNo"/>
+                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="centerX" secondItem="mRj-P5-83N" secondAttribute="centerX" constant="19" id="9SS-4t-s5H"/>
+                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="top" secondItem="mRj-P5-83N" secondAttribute="top" constant="31" id="PYN-IN-o8x"/>
+                                                        <constraint firstItem="2Fh-OO-gzi" firstAttribute="leading" secondItem="mRj-P5-83N" secondAttribute="leading" constant="8" id="ScM-ZA-yft"/>
+                                                        <constraint firstItem="Ml5-p3-J8s" firstAttribute="top" secondItem="mRj-P5-83N" secondAttribute="top" constant="31" id="jlf-p3-Tgz"/>
+                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="top" secondItem="2Fh-OO-gzi" secondAttribute="top" id="lrE-90-B0t"/>
+                                                        <constraint firstItem="Ml5-p3-J8s" firstAttribute="top" secondItem="2Fh-OO-gzi" secondAttribute="top" id="nQU-PH-vQI"/>
+                                                        <constraint firstItem="f3K-Ri-wSL" firstAttribute="top" secondItem="mRj-P5-83N" secondAttribute="top" constant="31" id="ztS-dh-7rD"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mRj-P5-83N" firstAttribute="top" secondItem="ZK7-d7-5sL" secondAttribute="topMargin" constant="-13" id="D2L-HO-gAf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mRj-P5-83N" secondAttribute="trailing" constant="9" id="OWV-d9-L59"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mRj-P5-83N" secondAttribute="trailing" constant="9" id="hUt-P5-dMx"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="mRj-P5-83N" secondAttribute="bottom" constant="-9" id="jn2-eg-DVq"/>
-                                                <constraint firstItem="mRj-P5-83N" firstAttribute="leading" secondItem="ZK7-d7-5sL" secondAttribute="leading" id="qhX-2H-O6s"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mRj-P5-83N" secondAttribute="trailing" constant="9" id="vkq-O3-66n"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mRj-P5-83N" secondAttribute="trailing" constant="9" id="zQj-WF-h55"/>
+                                                <constraint firstItem="mRj-P5-83N" firstAttribute="leading" secondItem="ZK7-d7-5sL" secondAttribute="leading" id="Qtf-65-wkl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mRj-P5-83N" secondAttribute="bottom" constant="-9" id="UeB-5e-oh7"/>
+                                                <constraint firstItem="mRj-P5-83N" firstAttribute="top" secondItem="ZK7-d7-5sL" secondAttribute="topMargin" constant="-33" id="cEA-Dz-sgX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mRj-P5-83N" secondAttribute="trailing" constant="6" id="hUj-65-ucV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -179,8 +228,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-KC-d5X">
-                                <rect key="frame" x="49" y="443" width="278" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-59-fJp">
+                                <rect key="frame" x="21" y="159" width="333" height="63"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="0Tg-Dg-WlT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-KC-d5X">
+                                <rect key="frame" x="57.5" y="430" width="260" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHe-fE-x6d">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
@@ -190,48 +248,371 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqP-o9-cX4">
-                                        <rect key="frame" x="73" y="0.0" width="59" height="30"/>
+                                        <rect key="frame" x="67" y="0.0" width="59" height="30"/>
                                         <state key="normal" title="Clear"/>
                                         <connections>
                                             <action selector="clearBubbles:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZQo-yx-tmv"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dD-Gf-0x2">
+                                        <rect key="frame" x="134" y="0.0" width="59" height="30"/>
+                                        <state key="normal" title="Enable"/>
+                                        <connections>
+                                            <action selector="enableAllKeys:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r7U-jv-YI0"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfR-VL-RkC">
-                                        <rect key="frame" x="146" y="0.0" width="59" height="30"/>
+                                        <rect key="frame" x="201" y="0.0" width="59" height="30"/>
                                         <state key="normal" title="Next"/>
                                         <connections>
                                             <action selector="nextBubbleFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f9G-zS-MMu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S57-9o-RUJ">
-                                        <rect key="frame" x="219" y="0.0" width="59" height="30"/>
-                                        <state key="normal" title="Give Up"/>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9e-p7-ObA">
+                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="0.19006849315068494" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ldy-wc-yUa"/>
+                                </constraints>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKb-zr-3Zk"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-qr-59L">
+                                <rect key="frame" x="1" y="453" width="373" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNn-KE-hAN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="Q">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
-                                            <action selector="giveUpFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Foh-0i-kZd"/>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UOn-hB-jty"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="87" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TE-I6-SQK" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="38" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="W">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QVm-f1-B5e"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="69" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sts-Y0-Juw" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="76" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="E">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6V-kn-DfO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="82" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-kD-Jay" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="114.5" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="R">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KMc-05-yrR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="84" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSz-Qm-vKI" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="152.5" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="T">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8kK-af-EOv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="89" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-Pe-Iuu" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="190.5" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="Y">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nn3-tz-Sbw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="85" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSi-Mt-2u4" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="228.5" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="U">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ot9-mY-1nG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFM-DT-9NA" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="267" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="I">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.86745876736111116" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vwa-sS-9HF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="79" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czx-n4-sMo" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="305" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="O">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZR-a1-6xc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="80" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5M-b1-PwH" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="343" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="P">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VGc-ba-OlT"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XEc-qr-59L" secondAttribute="height" multiplier="373:57" id="s3M-0P-XUd"/>
+                                </constraints>
                             </stackView>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcV-rf-Or7">
-                                <rect key="frame" x="16" y="20" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="o7h-at-DIV" kind="show" id="VLb-qB-5Jo"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ypd-hw-UbM">
+                                <rect key="frame" x="22" y="508" width="332" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" tag="65" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2n-5X-QaP" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="gpQ-xk-GE3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="A">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0tI-Mq-yAn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="83" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOP-u6-cjU" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="36" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="0XI-v3-00V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="S">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJN-LQ-2Jd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="68" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10c-jw-W05" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="74" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="LoS-G4-ZfJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="D">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7q-Yc-mUJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="70" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gag-eW-zxg" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="112" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="8d4-Qt-Mvl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="F">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYY-gB-g4Q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-BQ-nCI" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="150" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="yEY-8J-Xkc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="G">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6P3-mk-Epq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxp-bZ-z3c" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="188" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="1RZ-be-X3q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="H">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hr1-XD-iAQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="74" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKd-rz-tPT" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="226" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="xSy-T3-ImB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="J">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3wO-yP-QMi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5h-FI-eW1" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="264" y="0.0" width="30" height="57"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="B4E-Na-mhA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="K">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dn8-HU-8Na"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="76" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn2-ha-Ph3" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="302" y="0.0" width="30" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="crO-nE-pbr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="L">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GyH-Cd-U9y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ypd-hw-UbM" secondAttribute="height" multiplier="332:57" id="uCy-Hj-yBO"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mna-h5-8KF">
+                                <rect key="frame" x="59" y="563" width="258" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" tag="90" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-kY-tcB" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="Z">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cr0-4C-vv1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="88" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWR-aJ-VXV" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="38" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihx-sR-rzM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="67" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-tF-I4c" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="76" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="C">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NhX-LS-N4J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="86" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-g7-8vN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="114" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="V">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jg0-8K-UXT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="66" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69C-vi-aVJ" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="152" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="B">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7k-1L-GBG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="78" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzJ-6D-4Nh" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="190" y="0.0" width="30" height="57"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="N">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M94-e1-r3Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="77" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9a-UN-Xu7" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
+                                        <rect key="frame" x="228" y="0.0" width="30" height="57"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="38"/>
+                                        <state key="normal" title="M">
+                                            <color key="titleColor" red="0.0" green="0.60440250969999998" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3f1-b7-RO5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GWR-aJ-VXV" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="61k-av-c1U"/>
+                                    <constraint firstItem="0fR-tF-I4c" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="8SH-XH-h8g"/>
+                                    <constraint firstItem="SzJ-6D-4Nh" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="Cu8-cG-K28"/>
+                                    <constraint firstItem="g9a-UN-Xu7" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="Do1-PX-noJ"/>
+                                    <constraint firstAttribute="width" secondItem="Mna-h5-8KF" secondAttribute="height" multiplier="86:19" id="GqF-7S-IZ4"/>
+                                    <constraint firstItem="g9a-UN-Xu7" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="SM4-wS-vpE"/>
+                                    <constraint firstItem="GCw-g7-8vN" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="cdM-82-DUt"/>
+                                    <constraint firstItem="0fR-tF-I4c" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="k3S-za-0Og"/>
+                                    <constraint firstItem="GCw-g7-8vN" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="mfG-nw-E07"/>
+                                    <constraint firstItem="SzJ-6D-4Nh" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="noR-oy-LbI"/>
+                                    <constraint firstItem="GWR-aJ-VXV" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="rEB-dO-YOL"/>
+                                    <constraint firstItem="69C-vi-aVJ" firstAttribute="height" secondItem="VPn-kY-tcB" secondAttribute="height" id="zCe-IV-zoc"/>
+                                    <constraint firstItem="69C-vi-aVJ" firstAttribute="width" secondItem="VPn-kY-tcB" secondAttribute="width" id="zm8-hf-Hqa"/>
+                                </constraints>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="IhG-6P-vu1">
-                                <rect key="frame" x="61" y="63" width="253" height="49"/>
+                                <rect key="frame" x="43" y="79" width="289" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM9-Fy-6GF" customClass="Bubble" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="82"/>
                                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="57y-8P-ljh"/>
-                                            <constraint firstAttribute="width" constant="46" id="OSt-T1-dI0"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="QQW-9A-jfM"/>
-                                            <constraint firstAttribute="height" constant="49" id="yaz-0h-7B0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="59"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="70"/>
                                         <state key="normal" title="?">
                                             <color key="titleColor" red="0.9882278283" green="1" blue="0.99677148950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -240,15 +621,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ede-nF-Rfn" customClass="Bubble" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="69" y="0.0" width="46" height="49"/>
+                                        <rect key="frame" x="78" y="0.0" width="55" height="82"/>
                                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="0P3-RP-al6"/>
-                                            <constraint firstAttribute="height" constant="49" id="1FL-cL-zIW"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="AwY-8u-wfY"/>
-                                            <constraint firstAttribute="width" constant="46" id="iJs-bs-mKf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="59"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="70"/>
                                         <state key="normal" title="?">
                                             <color key="titleColor" red="0.9882278283" green="1" blue="0.99677148950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -257,13 +632,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcY-0A-nBy" customClass="Bubble" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="138" y="0.0" width="46" height="49"/>
+                                        <rect key="frame" x="156" y="0.0" width="55" height="82"/>
                                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="49" id="Evn-eH-y26"/>
-                                            <constraint firstAttribute="width" constant="46" id="tpe-5g-ckz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="59"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="70"/>
                                         <state key="normal" title="?">
                                             <color key="titleColor" red="0.9882278283" green="1" blue="0.99677148950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -272,13 +643,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WC-vW-M7t" customClass="Bubble" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="207" y="0.0" width="46" height="49"/>
+                                        <rect key="frame" x="234" y="0.0" width="55" height="82"/>
                                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="9IX-LM-5Tv"/>
-                                            <constraint firstAttribute="height" constant="49" id="eok-QO-Kus"/>
+                                            <constraint firstAttribute="width" constant="55" id="YRO-Qi-zTf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="59"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="70"/>
                                         <state key="normal" title="?">
                                             <color key="titleColor" red="0.9882278283" green="1" blue="0.99677148950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -288,301 +658,80 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-qr-59L">
-                                <rect key="frame" x="0.0" y="470" width="376" height="55"/>
-                                <subviews>
-                                    <button opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNn-KE-hAN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Q"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UOn-hB-jty"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="87" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TE-I6-SQK" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="38.5" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="W"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QVm-f1-B5e"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="69" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sts-Y0-Juw" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="77" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="E"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6V-kn-DfO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="82" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-kD-Jay" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="115" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="R"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KMc-05-yrR"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="84" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSz-Qm-vKI" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="153.5" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="T"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8kK-af-EOv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="89" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-Pe-Iuu" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="192" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Y"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nn3-tz-Sbw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="85" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSi-Mt-2u4" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="230.5" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="U"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ot9-mY-1nG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFM-DT-9NA" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="269" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="I"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vwa-sS-9HF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="79" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czx-n4-sMo" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="307" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="O"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZR-a1-6xc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="80" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5M-b1-PwH" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="345.5" y="0.0" width="30.5" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="P"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VGc-ba-OlT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mna-h5-8KF">
-                                <rect key="frame" x="58" y="564" width="259" height="55"/>
-                                <subviews>
-                                    <button opaque="NO" tag="90" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-kY-tcB" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Z"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cr0-4C-vv1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="88" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWR-aJ-VXV" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="X"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihx-sR-rzM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="67" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-tF-I4c" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="C"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NhX-LS-N4J"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="86" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-g7-8vN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="114" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="V"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jg0-8K-UXT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="66" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69C-vi-aVJ" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="152" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="B"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7k-1L-GBG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="78" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzJ-6D-4Nh" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="N"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M94-e1-r3Z"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="77" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9a-UN-Xu7" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="228" y="0.0" width="31" height="55"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="M"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3f1-b7-RO5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ypd-hw-UbM">
-                                <rect key="frame" x="21" y="518" width="334" height="55"/>
-                                <subviews>
-                                    <button opaque="NO" tag="65" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2n-5X-QaP" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="A"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0tI-Mq-yAn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="83" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOP-u6-cjU" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="S"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJN-LQ-2Jd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="68" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10c-jw-W05" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="76" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="D"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7q-Yc-mUJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="70" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gag-eW-zxg" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="114" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="F"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYY-gB-g4Q"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-BQ-nCI" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="152" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="G"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6P3-mk-Epq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxp-bZ-z3c" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="H"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hr1-XD-iAQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="74" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKd-rz-tPT" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="228" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="J"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3wO-yP-QMi"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5h-FI-eW1" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="266" y="0.0" width="30" height="55"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="K"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dn8-HU-8Na"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="76" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn2-ha-Ph3" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">
-                                        <rect key="frame" x="304" y="0.0" width="30" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="L"/>
-                                        <connections>
-                                            <action selector="KeyboardClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GyH-Cd-U9y"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXf-RJ-4yB">
-                                <rect key="frame" x="320" y="24" width="46" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9e-p7-ObA">
-                                <rect key="frame" x="0.0" y="617" width="375" height="30"/>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwV-Yo-1mC">
+                                <rect key="frame" x="334" y="583" width="24" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rwV-Yo-1mC" secondAttribute="height" multiplier="10:9" constant="5.1111111111111107" id="jvR-TD-ZZs"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="delete copy">
+                                    <color key="titleColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="submitGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKb-zr-3Zk"/>
+                                    <action selector="backspacePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="62m-5b-DRa"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-59-fJp">
-                                <rect key="frame" x="20" y="116" width="334" height="58"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="5so-kK-mg1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Mna-h5-8KF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="30F-ws-TpO"/>
-                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="3Mw-tb-sbn"/>
-                            <constraint firstItem="rcV-rf-Or7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3bF-tb-vez"/>
-                            <constraint firstItem="Mna-h5-8KF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Dr-JF-GkN"/>
-                            <constraint firstItem="DAc-KC-d5X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Km-yF-hi6"/>
-                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CD6-Pq-k5g"/>
-                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="top" secondItem="bq3-59-fJp" secondAttribute="bottom" constant="12" id="DI3-pE-UWe"/>
-                            <constraint firstAttribute="bottom" secondItem="S9e-p7-ObA" secondAttribute="bottom" constant="20" symbolic="YES" id="Eh7-bj-xdb"/>
-                            <constraint firstItem="ypd-hw-UbM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ekr-fd-LHY"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="top" secondItem="R6J-uj-9Vk" secondAttribute="bottom" constant="35" id="GZR-z2-MLH"/>
-                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="centerX" secondItem="XEc-qr-59L" secondAttribute="centerX" id="J6A-Dg-raV"/>
-                            <constraint firstItem="rcV-rf-Or7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JIh-tb-7oA"/>
-                            <constraint firstItem="bq3-59-fJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JVk-NW-jpb"/>
-                            <constraint firstItem="bq3-59-fJp" firstAttribute="top" secondItem="IhG-6P-vu1" secondAttribute="bottom" constant="4" id="OPn-cV-tHj"/>
-                            <constraint firstItem="bq3-59-fJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TpQ-hJ-diO"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VWh-mX-f7l"/>
-                            <constraint firstItem="DAc-KC-d5X" firstAttribute="top" secondItem="R6J-uj-9Vk" secondAttribute="bottom" constant="8" symbolic="YES" id="ZAR-BI-5hp"/>
-                            <constraint firstItem="lXf-RJ-4yB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="ZNd-2n-GEV"/>
-                            <constraint firstItem="ypd-hw-UbM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZPr-Yh-bwU"/>
-                            <constraint firstAttribute="trailing" secondItem="S9e-p7-ObA" secondAttribute="trailing" id="bMe-zU-XEg"/>
-                            <constraint firstItem="IhG-6P-vu1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="43" id="biP-t2-eAJ"/>
-                            <constraint firstItem="IhG-6P-vu1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e8P-JX-hKV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mna-h5-8KF" secondAttribute="bottom" constant="48" id="e9b-Y5-Alk"/>
-                            <constraint firstItem="IhG-6P-vu1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eda-P6-BwI"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iN7-4V-3hv"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kL0-bu-gzP"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="leading" secondItem="S9e-p7-ObA" secondAttribute="leading" id="qhE-Mk-XLA"/>
-                            <constraint firstItem="ypd-hw-UbM" firstAttribute="centerX" secondItem="Mna-h5-8KF" secondAttribute="centerX" id="s6n-MJ-j2V"/>
-                            <constraint firstItem="XEc-qr-59L" firstAttribute="centerX" secondItem="ypd-hw-UbM" secondAttribute="centerX" id="tS5-u6-AVD"/>
-                            <constraint firstItem="lXf-RJ-4yB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="7" id="uSK-oQ-YtS"/>
-                            <constraint firstItem="Mna-h5-8KF" firstAttribute="top" secondItem="XEc-qr-59L" secondAttribute="bottom" constant="39" id="wtL-9p-m6e"/>
-                            <constraint firstItem="S9e-p7-ObA" firstAttribute="top" secondItem="ypd-hw-UbM" secondAttribute="bottom" constant="44" id="xK8-cS-AQX"/>
-                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y9C-6c-Syi"/>
+                            <constraint firstItem="S9e-p7-ObA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4xK-mQ-Uk6"/>
+                            <constraint firstItem="S9e-p7-ObA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8GC-Xi-zum"/>
+                            <constraint firstItem="rwV-Yo-1mC" firstAttribute="centerY" secondItem="Mna-h5-8KF" secondAttribute="centerY" id="ANP-yT-2LS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ypd-hw-UbM" secondAttribute="trailing" constant="21" id="C2N-tB-F9E"/>
+                            <constraint firstItem="IhG-6P-vu1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="GU3-Jn-h73"/>
+                            <constraint firstAttribute="trailing" secondItem="S9e-p7-ObA" secondAttribute="trailing" id="GqG-d3-HwF"/>
+                            <constraint firstItem="bq3-59-fJp" firstAttribute="top" secondItem="IhG-6P-vu1" secondAttribute="bottom" constant="-2" id="HPK-og-gDG"/>
+                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="Hac-Ji-aFv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R6J-uj-9Vk" secondAttribute="trailing" constant="54" id="IqZ-UL-zE6"/>
+                            <constraint firstItem="DAc-KC-d5X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kra-uj-oiJ"/>
+                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="top" secondItem="bq3-59-fJp" secondAttribute="bottom" constant="-4" id="P28-WS-8mL"/>
+                            <constraint firstItem="S9e-p7-ObA" firstAttribute="top" secondItem="rwV-Yo-1mC" secondAttribute="bottom" constant="22" id="P7m-nq-fTU"/>
+                            <constraint firstItem="DAc-KC-d5X" firstAttribute="top" secondItem="R6J-uj-9Vk" secondAttribute="bottom" constant="6" id="ROw-Hp-a1N"/>
+                            <constraint firstItem="Mna-h5-8KF" firstAttribute="top" secondItem="ypd-hw-UbM" secondAttribute="bottom" constant="-2" id="Scu-Qk-A9u"/>
+                            <constraint firstItem="ypd-hw-UbM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U1N-Nq-f0Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mna-h5-8KF" secondAttribute="trailing" constant="58" id="Vpl-5Q-dTH"/>
+                            <constraint firstItem="Mna-h5-8KF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XgO-mZ-Q76"/>
+                            <constraint firstItem="XEc-qr-59L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="1" id="YrP-7B-ikQ"/>
+                            <constraint firstItem="bq3-59-fJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="21" id="Zuy-Pj-TSS"/>
+                            <constraint firstItem="rwV-Yo-1mC" firstAttribute="leading" secondItem="Mna-h5-8KF" secondAttribute="trailing" constant="17" id="aik-T1-HtD"/>
+                            <constraint firstItem="ypd-hw-UbM" firstAttribute="top" secondItem="XEc-qr-59L" secondAttribute="bottom" constant="-2" id="b3Q-0e-1d4"/>
+                            <constraint firstItem="Mna-h5-8KF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="59" id="dks-no-DDS"/>
+                            <constraint firstItem="S9e-p7-ObA" firstAttribute="top" secondItem="Mna-h5-8KF" secondAttribute="bottom" constant="2" id="i6N-mJ-tSk"/>
+                            <constraint firstItem="XEc-qr-59L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iuk-qb-h6k"/>
+                            <constraint firstItem="IhG-6P-vu1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kZa-Qa-0m4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XEc-qr-59L" secondAttribute="trailing" constant="1" id="lL5-3B-wkB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S9e-p7-ObA" secondAttribute="bottom" id="lV0-lW-Mmw"/>
+                            <constraint firstItem="XEc-qr-59L" firstAttribute="top" secondItem="DAc-KC-d5X" secondAttribute="bottom" constant="-7" id="lyH-OY-WB8"/>
+                            <constraint firstItem="IhG-6P-vu1" firstAttribute="centerX" secondItem="bq3-59-fJp" secondAttribute="centerX" id="rFz-Cy-Vtk"/>
+                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sLN-k8-8xF"/>
+                            <constraint firstItem="R6J-uj-9Vk" firstAttribute="centerX" secondItem="DAc-KC-d5X" secondAttribute="centerX" id="v39-KL-xBe"/>
+                            <constraint firstItem="bq3-59-fJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wfL-n4-4EU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="00:00" id="eWy-TM-wdK">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="pX3-2x-x1w">
+                            <connections>
+                                <segue destination="o7h-at-DIV" kind="presentation" id="WOQ-83-3CM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Give Up" id="JRp-YX-x3s">
+                            <connections>
+                                <action selector="giveUpFunction:" destination="BYZ-38-t0r" id="HA7-cV-kjg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backspaceButton" destination="rwV-Yo-1mC" id="Pib-44-Tmh"/>
                         <outlet property="clear" destination="iqP-o9-cX4" id="U3M-QC-CZL"/>
-                        <outlet property="giveUp" destination="S57-9o-RUJ" id="Wap-dT-CDU"/>
+                        <outlet property="enable" destination="8dD-Gf-0x2" id="xWu-Sv-u9s"/>
+                        <outlet property="giveUp" destination="JRp-YX-x3s" id="r0S-eC-fqp"/>
                         <outlet property="guessTable" destination="R6J-uj-9Vk" id="FTo-v7-C1c"/>
                         <outlet property="info" destination="bq3-59-fJp" id="3gB-gX-TLG"/>
+                        <outlet property="navigation" destination="eWy-TM-wdK" id="JjO-Fz-HVc"/>
                         <outlet property="nextBubble" destination="RfR-VL-RkC" id="zvS-yn-6Hh"/>
                         <outlet property="previousBubble" destination="cHe-fE-x6d" id="2Sf-q9-dhw"/>
-                        <outlet property="timerLabel" destination="lXf-RJ-4yB" id="1fb-8d-33u"/>
+                        <outlet property="submitButton" destination="S9e-p7-ObA" id="IrN-w5-Ltd"/>
                         <outletCollection property="keyboardKeys" destination="HNn-KE-hAN" collectionClass="NSMutableArray" id="2xs-J8-NHC"/>
                         <outletCollection property="keyboardKeys" destination="0TE-I6-SQK" collectionClass="NSMutableArray" id="xs8-15-LIA"/>
                         <outletCollection property="keyboardKeys" destination="sts-Y0-Juw" collectionClass="NSMutableArray" id="Hqa-R4-TBd"/>
@@ -617,14 +766,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45.600000000000001" y="56.221889055472268"/>
+            <point key="canvasLocation" x="877.60000000000002" y="54.422788605697157"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Ab-3b-5f0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9sb-ik-4FV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vKP-TM-mfb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AkT-W4-bcV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YI6-6t-JVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.799999999999997" y="55.772113943028494"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bull.png" width="271" height="186"/>
-        <image name="cow.png" width="251" height="201"/>
+        <image name="Cows&amp;BullsIcon" width="944" height="598"/>
+        <image name="bull" width="271" height="186"/>
+        <image name="cow" width="251" height="201"/>
+        <image name="delete copy" width="237" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rCZ-er-mQP"/>
+        <segue reference="Tfz-3x-8vc"/>
     </inferredMetricsTieBreakers>
 </document>

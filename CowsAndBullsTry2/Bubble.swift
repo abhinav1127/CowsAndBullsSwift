@@ -18,12 +18,17 @@ class Bubble: UIButton {
             Bubble.numOn -= 1
             isOn = false
             self.backgroundColor = UIColor.gray
+            print(Bubble.numOn)
         } else {
             Bubble.numOn += 1
             isOn = true
             self.backgroundColor = GameViewController.ice
-            
+            print(Bubble.numOn)
         }
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return UIBezierPath(ovalIn: bounds).contains(point)
     }
     /*
     // Only override draw() if you perform custom drawing.

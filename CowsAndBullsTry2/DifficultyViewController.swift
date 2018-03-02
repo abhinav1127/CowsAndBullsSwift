@@ -9,26 +9,14 @@
 import UIKit
 
 class DifficultyViewController: UIViewController {
-
-    var difficultyLevel: Int = 1
     
-    @IBOutlet weak var hardButton: UIButton!
-    @IBOutlet weak var easyButton: UIButton!
+    static var difficultyLevel: Int = 0
     
     
-    @IBAction func easyDifficultySelected(_ sender: Any) {
-        difficultyLevel = 1
+    @IBAction func easyDifficultySelected(_ sender: UIButton) {
+        DifficultyViewController.difficultyLevel = sender.tag
     }
     
-    @IBAction func hardDifficultySelected(_ sender: Any) {
-        difficultyLevel = 2
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var gameController = segue.destination as! GameViewController
-        gameController.difficultyLevel = difficultyLevel
-
-    }
     
     
     override func viewDidLoad() {
