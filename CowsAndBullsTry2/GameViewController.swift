@@ -146,7 +146,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     @objc func updateTime() {
         
-        var currentTime = NSDate.timeIntervalSinceReferenceDate
+        let currentTime = NSDate.timeIntervalSinceReferenceDate
         
         //Find the difference between current time and start time.
         var elapsedTime: TimeInterval = currentTime - startTime
@@ -162,12 +162,12 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         elapsedTime -= TimeInterval(seconds)
         
         //find out the fraction of milliseconds to be displayed.
-        let fraction = UInt8(elapsedTime * 100)
+        //let fraction = UInt8(elapsedTime * 100)
         
         //add the leading zero for minutes, seconds and millseconds and store them as string constants
         let strMinutes = String(format: "%02d", minutes)
         let strSeconds = String(format: "%02d", seconds)
-        let strFraction = String(format: "%02d", fraction)
+        //let strFraction = String(format: "%02d", fraction)
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
         navigation.title = "\(strMinutes):\(strSeconds)"
@@ -504,7 +504,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
   
     func replace(myString: String, _ index: Int, _ newChar: Character) -> String {
-        var chars = Array(myString.characters)     // gets an array of characters
+        var chars = Array(myString)     // gets an array of characters
         chars[index] = newChar
         let modifiedString = String(chars)
         return modifiedString
