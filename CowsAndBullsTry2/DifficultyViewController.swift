@@ -10,11 +10,10 @@ import UIKit
 
 class DifficultyViewController: UIViewController {
     
-    static var difficultyLevel: Int = 0
+    var difficultyLevel: String?
     
-    
-    @IBAction func easyDifficultySelected(_ sender: UIButton) {
-        DifficultyViewController.difficultyLevel = sender.tag
+    @IBAction func DifficultySelected(_ sender: UIButton) {
+        difficultyLevel = sender.titleLabel?.text
     }
     
     
@@ -25,20 +24,16 @@ class DifficultyViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        print(segue.identifier)
+        if segue.identifier == "Easy" || segue.identifier == "Medium" || segue.identifier == "Hard" || segue.identifier == "veryHard" {
+            let navController = segue.destination as! UINavigationController
+            let gameviewController = navController.topViewController as! GameViewController
+            gameviewController.difficultyLevel = self.difficultyLevel
+            print("text: \(gameviewController.difficultyLevel)")
+        }
+        
+        print("what")
     }
-    */
 
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		E6016B13203F7BA2009B4B29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6016B11203F7BA2009B4B29 /* LaunchScreen.storyboard */; };
 		E61B8E0C20229CEF00A48EB4 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61B8E0B20229CEF00A48EB4 /* Bubble.swift */; };
+		E63AA3C3205EFC3F00980FD4 /* HardWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E63AA3BF205EFC3F00980FD4 /* HardWords.txt */; };
+		E63AA3C4205EFC3F00980FD4 /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E63AA3C0205EFC3F00980FD4 /* EasyWords.txt */; };
+		E63AA3C5205EFC3F00980FD4 /* MediumWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E63AA3C1205EFC3F00980FD4 /* MediumWords.txt */; };
+		E63AA3C6205EFC3F00980FD4 /* VeryHardWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E63AA3C2205EFC3F00980FD4 /* VeryHardWords.txt */; };
 		E63C82DD200E7DFA008B4F9B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63C82DC200E7DFA008B4F9B /* Key.swift */; };
 		E6A43BAE1FD73F84009DC055 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */; };
 		E6C349521FD5FE34004DAB2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349511FD5FE34004DAB2A /* AppDelegate.swift */; };
@@ -18,10 +22,6 @@
 		E6C349671FD5FE34004DAB2A /* CowsAndBullsTry2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349661FD5FE34004DAB2A /* CowsAndBullsTry2Tests.swift */; };
 		E6C349721FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C349711FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift */; };
 		E6C9D9E01FE9A20A00E248D0 /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */; };
-		E6F841FF203645F700621EA7 /* HardWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6F841FB203645F700621EA7 /* HardWords.txt */; };
-		E6F84200203645F700621EA7 /* EasyWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6F841FC203645F700621EA7 /* EasyWords.txt */; };
-		E6F84201203645F700621EA7 /* MediumWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6F841FD203645F700621EA7 /* MediumWords.txt */; };
-		E6F84202203645F700621EA7 /* VeryHardWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6F841FE203645F700621EA7 /* VeryHardWords.txt */; };
 		E6F842062036499500621EA7 /* CBWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = E6F842052036499500621EA7 /* CBWords.txt */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +58,10 @@
 /* Begin PBXFileReference section */
 		E6016B12203F7BA2009B4B29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E61B8E0B20229CEF00A48EB4 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		E63AA3BF205EFC3F00980FD4 /* HardWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HardWords.txt; path = ../../../../Desktop/HardWords.txt; sourceTree = "<group>"; };
+		E63AA3C0205EFC3F00980FD4 /* EasyWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EasyWords.txt; path = ../../../../Desktop/EasyWords.txt; sourceTree = "<group>"; };
+		E63AA3C1205EFC3F00980FD4 /* MediumWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediumWords.txt; path = ../../../../Desktop/MediumWords.txt; sourceTree = "<group>"; };
+		E63AA3C2205EFC3F00980FD4 /* VeryHardWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VeryHardWords.txt; path = ../../../../Desktop/VeryHardWords.txt; sourceTree = "<group>"; };
 		E63C82DC200E7DFA008B4F9B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		E69CBEC92007DC3B002B6169 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		E69CBECB2007DC3B002B6169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,10 +79,6 @@
 		E6C349711FD5FE34004DAB2A /* CowsAndBullsTry2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowsAndBullsTry2UITests.swift; sourceTree = "<group>"; };
 		E6C349731FD5FE34004DAB2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6C9D9DF1FE9A20A00E248D0 /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
-		E6F841FB203645F700621EA7 /* HardWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HardWords.txt; path = ../../../../Desktop/HardWords.txt; sourceTree = "<group>"; };
-		E6F841FC203645F700621EA7 /* EasyWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EasyWords.txt; path = ../../../../Desktop/EasyWords.txt; sourceTree = "<group>"; };
-		E6F841FD203645F700621EA7 /* MediumWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediumWords.txt; path = ../../../../Desktop/MediumWords.txt; sourceTree = "<group>"; };
-		E6F841FE203645F700621EA7 /* VeryHardWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VeryHardWords.txt; path = ../../../../Desktop/VeryHardWords.txt; sourceTree = "<group>"; };
 		E6F842052036499500621EA7 /* CBWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CBWords.txt; path = ../../../../Desktop/CBWords.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,11 +149,11 @@
 				E6C349581FD5FE34004DAB2A /* Assets.xcassets */,
 				E6016B11203F7BA2009B4B29 /* LaunchScreen.storyboard */,
 				E6F842052036499500621EA7 /* CBWords.txt */,
-				E6F841FC203645F700621EA7 /* EasyWords.txt */,
-				E6F841FB203645F700621EA7 /* HardWords.txt */,
-				E6F841FD203645F700621EA7 /* MediumWords.txt */,
-				E6F841FE203645F700621EA7 /* VeryHardWords.txt */,
 				E6C3495D1FD5FE34004DAB2A /* Info.plist */,
+				E63AA3C0205EFC3F00980FD4 /* EasyWords.txt */,
+				E63AA3BF205EFC3F00980FD4 /* HardWords.txt */,
+				E63AA3C1205EFC3F00980FD4 /* MediumWords.txt */,
+				E63AA3C2205EFC3F00980FD4 /* VeryHardWords.txt */,
 				E6A43BAD1FD73F84009DC055 /* CustomTableViewCell.swift */,
 			);
 			path = CowsAndBullsTry2;
@@ -285,13 +285,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6F84202203645F700621EA7 /* VeryHardWords.txt in Resources */,
 				E6016B13203F7BA2009B4B29 /* LaunchScreen.storyboard in Resources */,
-				E6F84201203645F700621EA7 /* MediumWords.txt in Resources */,
-				E6F84200203645F700621EA7 /* EasyWords.txt in Resources */,
-				E6F841FF203645F700621EA7 /* HardWords.txt in Resources */,
 				E6F842062036499500621EA7 /* CBWords.txt in Resources */,
+				E63AA3C5205EFC3F00980FD4 /* MediumWords.txt in Resources */,
+				E63AA3C6205EFC3F00980FD4 /* VeryHardWords.txt in Resources */,
+				E63AA3C4205EFC3F00980FD4 /* EasyWords.txt in Resources */,
 				E6C349591FD5FE34004DAB2A /* Assets.xcassets in Resources */,
+				E63AA3C3205EFC3F00980FD4 /* HardWords.txt in Resources */,
 				E6C349571FD5FE34004DAB2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

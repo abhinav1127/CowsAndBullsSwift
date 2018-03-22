@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CowsAndBullsTry2/ViewController.swift"
+            timestampString = "535404348.807527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of CowsAndBullsTry2.ViewController.turquoise : __ObjC.UIColor"
+                  moduleName = "CowsAndBullsTry2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhinavtirath/projects/CowBull/CowsAndBullsSwift/CowsAndBullsTry2/ViewController.swift"
+                  timestampString = "535318309.861669"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CowsAndBullsTry2.ViewController.turquoise.getter : __ObjC.UIColor"
+                  moduleName = "CowsAndBullsTry2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhinavtirath/projects/CowBull/CowsAndBullsSwift/CowsAndBullsTry2/ViewController.swift"
+                  timestampString = "535318309.870818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CowsAndBullsTry2.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; CowsAndBullsTry2.ViewController"
+                  moduleName = "CowsAndBullsTry2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhinavtirath/projects/CowBull/CowsAndBullsSwift/CowsAndBullsTry2/ViewController.swift"
+                  timestampString = "535318309.873312"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "2309">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CowsAndBullsTry2.ViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;CowsAndBullsTry2.ViewController&gt;"
+                  moduleName = "CowsAndBullsTry2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhinavtirath/projects/CowBull/CowsAndBullsSwift/CowsAndBullsTry2/ViewController.swift"
+                  timestampString = "535318309.87561"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "2194">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CowsAndBullsTry2/GameViewController.swift"
+            timestampString = "543097749.677249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "665"
+            endingLineNumber = "665"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

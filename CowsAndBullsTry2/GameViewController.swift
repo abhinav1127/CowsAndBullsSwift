@@ -31,6 +31,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     var lastBubbleSelected = 0
     var hasRepeatingLetters = false
     
+    var difficultyLevel: String?
     
     @IBOutlet var keyboardKeys: [Key]!
     var keyboardKeyLongPressRecognizers: [UILongPressGestureRecognizer] = []
@@ -260,6 +261,39 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         bubbles[2].setTitle(" ", for: .normal)
         bubbles[3].setTitle(" ", for: .normal)
         bubbleClicked(bubbles[0])
+        
+        let randomValue: Double = (Double(arc4random()) / Double(UInt32.max))
+        
+        print("RandomValue: \(randomValue)")
+        if (difficultyLevel == "Easy") {
+            wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+        } else if (difficultyLevel == "Medium") {
+            if (randomValue < 0.25) {
+                wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+            } else {
+                wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+            }
+        } else if (difficultyLevel == "Hard") {
+            if (randomValue < 0.1) {
+                wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+            } else if (randomValue < 0.3) {
+                wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+            } else {
+                wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+            }
+        } else if (difficultyLevel == "Very Hard") {
+            if (randomValue < 0.05) {
+                wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+            } else if (randomValue < 0.2) {
+                wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+            } else if (randomValue < 0.4) {
+                wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+            } else {
+                wordsFilePath = Bundle.main.path(forResource: "VeryHardWords", ofType: "txt")
+            }
+        } else {
+            print("Error: difficultyLevel is an unexpected value: \(difficultyLevel)")
+        }
         do {
             let wordsString = try String(contentsOfFile: wordsFilePath!)
             
@@ -441,7 +475,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             bubs.addGestureRecognizer(gestureRecognizer)
         }
 
-        print("Dll: \(DifficultyViewController.difficultyLevel)")
+        print("Dll: \(String(describing: difficultyLevel))")
 
         if let wordsFilePath1 = Bundle.main.path(forResource: "CBWords", ofType: "txt") {
             print("hello")
@@ -457,16 +491,47 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             }
             
         }
-        
-        if (DifficultyViewController.difficultyLevel == 1) {
-            wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
-        } else if (DifficultyViewController.difficultyLevel == 2) {
-            wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
-        } else if (DifficultyViewController.difficultyLevel == 3) {
-            wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+        print ("blah: \(difficultyLevel)")
+        if let dl = difficultyLevel {
+            let time = UInt32(NSDate().timeIntervalSinceReferenceDate)
+            srand48(Int(time))
+            let randomValue: Double = (Double(arc4random()) / Double(UInt32.max))
+            
+            if (dl == "Easy") {
+                wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+            } else if (dl == "Medium") {
+                if (randomValue < 0.25) {
+                    wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+                } else {
+                    wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+                }
+            } else if (dl == "Hard") {
+                if (randomValue < 0.1) {
+                    wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+                } else if (randomValue < 0.3) {
+                    wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+                } else {
+                    wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+                }
+            } else if (dl == "Very Hard") {
+                if (randomValue < 0.05) {
+                    wordsFilePath = Bundle.main.path(forResource: "EasyWords", ofType: "txt")
+                } else if (randomValue < 0.2) {
+                    wordsFilePath = Bundle.main.path(forResource: "MediumWords", ofType: "txt")
+                } else if (randomValue < 0.4) {
+                    wordsFilePath = Bundle.main.path(forResource: "HardWords", ofType: "txt")
+                } else {
+                    wordsFilePath = Bundle.main.path(forResource: "VeryHardWords", ofType: "txt")
+                }
+            } else {
+                print("Error: difficultyLevel is an unexpected value: \(difficultyLevel)")
+            }
+            print ("randomValue: \(randomValue)")
+
         } else {
-            wordsFilePath = Bundle.main.path(forResource: "VeryHardWords", ofType: "txt")
+            print("Error: difficultyLevel is nil")
         }
+        
                 
         do {
             let wordsString = try String(contentsOfFile: wordsFilePath!)
@@ -483,7 +548,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             print("Error: \(error)")
         }
         
-        
+        func chooseDictionaryBasedOnDifficulty() {
+            
+        }
         
         info.text = "Enter a guess!"
         fadeViewInThenOut(view: info, delay: 2)
@@ -558,14 +625,14 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         timer.invalidate()
         if (won) {
             if (pastGuesses.count != 1) {
-                info.text = "Correct! You got it in \(pastGuesses.count) guesses and \(navigation.title!)!"
+                info.text = "Correct! You got it in \(pastGuesses.count) guesses and \(navigation.title!) on \(difficultyLevel!)!"
             } else {
-                info.text = "Correct! You got it in 1 guess! How's that even possible?"
+                info.text = "Correct! You got it in 1 guess on \(difficultyLevel!)! How's that even possible?"
             }
             fadeViewInThenOut(view: info, delay: 10000)
 
         } else {
-            info.text = "The word was \(word)!"
+            info.text = "On \(difficultyLevel!), the word was \(word)!"
             fadeViewInThenOut(view: info, delay: 10000)
         }
         nextBubble.isEnabled = false
