@@ -285,7 +285,7 @@
                                     <action selector="submitGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKb-zr-3Zk"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-qr-59L">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-qr-59L">
                                 <rect key="frame" x="1" y="453" width="373" height="57"/>
                                 <subviews>
                                     <button opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNn-KE-hAN" customClass="Key" customModule="CowsAndBullsTry2" customModuleProvider="target">

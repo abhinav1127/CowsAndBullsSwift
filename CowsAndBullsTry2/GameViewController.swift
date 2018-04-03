@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+class GameViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var enable: UIButton!
     @IBOutlet weak var giveUp: UIBarButtonItem!
@@ -446,13 +446,22 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Viewdidload")
         info.textAlignment = .center
         Bubble.numOn = 4
         guessTable.delegate = self
         guessTable.dataSource = self
         print("num on: \(Bubble.numOn)")
         
+        
+        let keyWidth = (view.frame.size.width / 10) - 30
+
+        
+        
         for key in keyboardKeys {
+            
+            
             let keyTitle: Character = Character((key.titleLabel?.text!)!)
             key.setLetter(theLetter: keyTitle)
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.keyboardHeld))
@@ -546,10 +555,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
             
         } catch { // contentsOfFile throws an error
             print("Error: \(error)")
-        }
-        
-        func chooseDictionaryBasedOnDifficulty() {
-            
         }
         
         info.text = "Enter a guess!"
@@ -655,21 +660,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
         
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pastGuesses.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = guessTable.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
-        
-        cell.wordLbl.text = pastGuesses[indexPath.row]
-        cell.cowsLbl.text = String(cowsArray[indexPath.row])
-        cell.bullsLbl.text = String(bullsArray[indexPath.row])
-        
-        return cell
-    }
-    
     func fadeViewInThenOut(view : UIView, delay: TimeInterval) {
         let animationDuration = 0.25
         
@@ -692,3 +682,22 @@ class GameViewController: UIViewController, UITextFieldDelegate, UITableViewData
 
 }
 
+// MARK: UITableViewDataSource + Delegate
+
+extension GameViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pastGuesses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = guessTable.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+        
+        cell.wordLbl.text = pastGuesses[indexPath.row]
+        cell.cowsLbl.text = String(cowsArray[indexPath.row])
+        cell.bullsLbl.text = String(bullsArray[indexPath.row])
+        
+        return cell
+    }
+    
+}
